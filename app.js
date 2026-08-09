@@ -640,6 +640,18 @@ const recommendationSettingsList =
   document.getElementById("recommendationSettingsList");
 
 
+/* データ管理 */
+
+const exportDataButton =
+  document.getElementById("exportDataButton");
+
+const importDataInput =
+  document.getElementById("importDataInput");
+
+const resetDataButton =
+  document.getElementById("resetDataButton");
+
+
 /* =========================================================
    データ
 ========================================================= */
@@ -3793,5 +3805,640 @@ function loadPlayers() {
     players = [];
 
   }
+
+}
+/* =========================================================
+   データ書き出し
+========================================================= */
+
+if (exportDataButton) {
+
+  exportDataButton.addEventListener(
+    "click",
+    () => {
+
+      const backupData = {
+
+        version: 1,
+
+        app:
+          "eFootball Skill Manager",
+
+        exportedAt:
+          new Date().toISOString(),
+
+        players:
+          players
+
+      };
+
+
+      const json =
+        JSON.stringify(
+          backupData,
+          null,
+          2
+        );
+
+
+      const blob =
+        new Blob(
+          [json],
+          {
+            type:
+              "application/json;charset=utf-8"
+          }
+        );
+
+
+      const url =
+        URL.createObjectURL(
+          blob
+        );
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      const now =
+        new Date();
+
+
+      const year =
+        now.getFullYear();
+
+
+      const month =
+        String(
+          now.getMonth() + 1
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const day =
+        String(
+          now.getDate()
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const hours =
+        String(
+          now.getHours()
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      const minutes =
+        String(
+          now.getMinutes()
+        ).padStart(
+          2,
+          "0"
+        );
+
+
+      link.href =
+        url;
+
+
+      link.download =
+        "efootball-skill-manager-backup-" +
+        year +
+        month +
+        day +
+        "-" +
+        hours +
+        minutes +
+        ".json";
+
+
+      document.body.appendChild(
+        link
+      );
+
+
+      link.click();
+
+
+      document.body.removeChild(
+        link
+      );
+
+
+      /*
+        URLをすぐ破棄すると
+        一部ブラウザでダウンロードが
+        失敗する可能性があるため少し待つ
+      */
+
+      setTimeout(
+        () => {
+
+          URL.revokeObjectURL(
+            url
+          );
+
+        },
+        1000
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   データ読み込み
+========================================================= */
+
+if (importDataInput) {
+
+  importDataInput.addEventListener(
+    "change",
+    (event) => {
+
+      const file =
+        event.target.files &&
+        event.target.files[0];
+
+
+      if (!file) {
+
+        return;
+
+      }
+
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        () => {
+
+          try {
+
+            const data =
+              JSON.parse(
+                reader.result
+              );
+
+
+            let importedPlayers =
+              [];
+
+
+            /*
+              現在のバックアップ形式
+
+              {
+                version: 1,
+                players: [...]
+              }
+            */
+
+            if (
+              data &&
+              Array.isArray(
+                data.players
+              )
+            ) {
+
+              importedPlayers =
+                data.players;
+
+            }
+
+            /*
+              古い形式
+
+              [
+                {...},
+                {...}
+              ]
+
+              にも対応
+            */
+
+            else if (
+              Array.isArray(
+                data
+              )
+            ) {
+
+              importedPlayers =
+                data;
+
+            }
+
+            else {
+
+              throw new Error(
+                "対応していないバックアップ形式です。"
+              );
+
+            }
+
+
+            const confirmed =
+              confirm(
+                "現在登録されている選手データを、読み込んだバックアップデータで置き換えます。\n\nよろしいですか？"
+              );
+
+
+            if (
+              !confirmed
+            ) {
+
+              importDataInput.value =
+                "";
+
+              return;
+
+            }
+
+
+            players =
+              importedPlayers.map(
+                normalizeImportedPlayer
+              );
+
+
+            savePlayers();
+
+
+            /*
+              表示を最新状態に更新
+            */
+
+            renderPlayerList();
+
+            renderMatchingPlayerOptions();
+
+            renderTargetMatching();
+
+            renderMaterialMatching();
+
+
+            alert(
+              players.length +
+              "人の選手データを復元しました。"
+            );
+
+
+          } catch (error) {
+
+            console.error(
+              "バックアップの読み込みに失敗しました。",
+              error
+            );
+
+
+            alert(
+              "バックアップファイルを読み込めませんでした。\n正しいJSONファイルか確認してください。"
+            );
+
+          }
+
+
+          /*
+            同じファイルを続けて
+            選択できるようにリセット
+          */
+
+          importDataInput.value =
+            "";
+
+        };
+
+
+      reader.onerror =
+        () => {
+
+          alert(
+            "ファイルの読み込みに失敗しました。"
+          );
+
+
+          importDataInput.value =
+            "";
+
+        };
+
+
+      reader.readAsText(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   インポートした選手データを現在形式へ変換
+========================================================= */
+
+function normalizeImportedPlayer(
+  player
+) {
+
+  /*
+    所持スキル
+  */
+
+  const ownedSkills =
+    Array.isArray(
+      player &&
+      player.ownedSkills
+    )
+      ? player.ownedSkills
+          .map(
+            (skill) => {
+
+              if (
+                typeof skill ===
+                "string"
+              ) {
+
+                return skill;
+
+              }
+
+
+              if (
+                skill &&
+                typeof skill.name ===
+                  "string"
+              ) {
+
+                return skill.name;
+
+              }
+
+
+              return null;
+
+            }
+          )
+          .filter(Boolean)
+          .slice(
+            0,
+            10
+          )
+
+      : [];
+
+
+  /*
+    追加スキル
+  */
+
+  const additionalSkills =
+    Array.isArray(
+      player &&
+      player.additionalSkills
+    )
+      ? player.additionalSkills
+          .map(
+            (skill) => {
+
+              /*
+                古い形式
+
+                "ワンタッチパス"
+              */
+
+              if (
+                typeof skill ===
+                "string"
+              ) {
+
+                return {
+
+                  name:
+                    skill,
+
+                  acquired:
+                    false
+
+                };
+
+              }
+
+
+              /*
+                現在形式
+              */
+
+              if (
+                skill &&
+                typeof skill.name ===
+                  "string"
+              ) {
+
+                return {
+
+                  name:
+                    skill.name,
+
+                  acquired:
+                    Boolean(
+                      skill.acquired
+                    )
+
+                };
+
+              }
+
+
+              return null;
+
+            }
+          )
+          .filter(Boolean)
+          .slice(
+            0,
+            5
+          )
+
+      : [];
+
+
+  return {
+
+    id:
+      player &&
+      player.id
+        ? player.id
+        : createPlayerId(),
+
+    name:
+      player &&
+      typeof player.name ===
+        "string"
+        ? player.name
+        : "",
+
+    position:
+      player &&
+      typeof player.position ===
+        "string"
+        ? player.position
+        : "",
+
+    ownedSkills:
+      ownedSkills,
+
+    additionalSkills:
+      additionalSkills,
+
+    specialTraining:
+      Boolean(
+        player &&
+        player.specialTraining
+      ),
+
+    createdAt:
+      player &&
+      player.createdAt
+        ? player.createdAt
+        : new Date().toISOString()
+
+  };
+
+}
+
+
+/* =========================================================
+   全データ初期化
+========================================================= */
+
+if (resetDataButton) {
+
+  resetDataButton.addEventListener(
+    "click",
+    () => {
+
+      if (
+        players.length === 0
+      ) {
+
+        alert(
+          "削除する選手データがありません。"
+        );
+
+        return;
+
+      }
+
+
+      const firstConfirm =
+        confirm(
+          "登録している選手データをすべて削除します。\n\nこの操作は元に戻せません。\n\n削除前に「データを書き出す」でバックアップすることをおすすめします。\n\n続けますか？"
+        );
+
+
+      if (
+        !firstConfirm
+      ) {
+
+        return;
+
+      }
+
+
+      /*
+        誤操作防止のため
+        もう一度確認
+      */
+
+      const secondConfirm =
+        confirm(
+          "本当に全選手データを削除しますか？"
+        );
+
+
+      if (
+        !secondConfirm
+      ) {
+
+        return;
+
+      }
+
+
+      players =
+        [];
+
+
+      savePlayers();
+
+
+      /*
+        選択状態もリセット
+      */
+
+      editingPlayerId =
+        null;
+
+      draftOwnedSkills =
+        [];
+
+      draftAdditionalSkills =
+        [];
+
+
+      if (
+        matchingTargetPlayer
+      ) {
+
+        matchingTargetPlayer.value =
+          "";
+
+      }
+
+
+      if (
+        matchingMaterialPlayer
+      ) {
+
+        matchingMaterialPlayer.value =
+          "";
+
+      }
+
+
+      /*
+        画面更新
+      */
+
+      renderPlayerList();
+
+      renderMatchingPlayerOptions();
+
+      renderTargetMatching();
+
+      renderMaterialMatching();
+
+
+      alert(
+        "全選手データを削除しました。"
+      );
+
+    }
+  );
 
 }
