@@ -2637,15 +2637,28 @@ confirmSkillSelectionButton.addEventListener(
    おすすめ
 ========================================================= */
 
+/* =========================================================
+   おすすめ
+========================================================= */
+
+
+/* =========================================================
+   登録ポジション
+   ↓
+   おすすめ設定の10分類へ変換
+========================================================= */
+
 function getRecommendationType(
   position
 ) {
 
-  if (
-    position === "CF" ||
-    position === "ST"
-  ) {
+  if (position === "CF") {
     return "CF";
+  }
+
+
+  if (position === "ST") {
+    return "ST";
   }
 
 
@@ -2653,18 +2666,30 @@ function getRecommendationType(
     position === "LWG" ||
     position === "RWG"
   ) {
-    return "WG";
+    return "LWG/RWG";
   }
 
 
   if (
     position === "LMF" ||
-    position === "RMF" ||
-    position === "OMF" ||
-    position === "CMF" ||
-    position === "DMF"
+    position === "RMF"
   ) {
-    return "MF";
+    return "LMF/RMF";
+  }
+
+
+  if (position === "OMF") {
+    return "OMF";
+  }
+
+
+  if (position === "CMF") {
+    return "CMF";
+  }
+
+
+  if (position === "DMF") {
+    return "DMF";
   }
 
 
@@ -2672,7 +2697,7 @@ function getRecommendationType(
     position === "LSB" ||
     position === "RSB"
   ) {
-    return "SB";
+    return "LSB/RSB";
   }
 
 
@@ -2690,6 +2715,10 @@ function getRecommendationType(
 
 }
 
+
+/* =========================================================
+   おすすめスキル表示
+========================================================= */
 
 function renderRecommendations() {
 
@@ -2727,66 +2756,80 @@ function renderRecommendations() {
   }
 
 
-  recommendPositionLabel.textContent =
-    position + " おすすめ";
-
-
   const recommendationType =
     getRecommendationType(
       position
     );
 
 
-  const groups =
-    RECOMMENDATIONS[
+  recommendPositionLabel.textContent =
+    position + " おすすめ";
+
+
+  if (
+    !recommendationType ||
+    !recommendationSettings[
     recommendationType
-    ] || [];
+    ]
+  ) {
+
+    const message =
+      document.createElement("p");
+
+    message.className =
+      "empty-message";
+
+    message.textContent =
+      "おすすめ設定がありません。";
 
 
-  groups.forEach(
-    (group) => {
-
-      createRecommendationGroup(
-        group.title,
-        group.skills || [],
-        false
-      );
+    recommendedSkillArea.appendChild(
+      message
+    );
 
 
-      if (
-        group.lowPriority &&
-        group.lowPriority.length > 0
-      ) {
+    return;
 
-        createRecommendationGroup(
-          group.title + "（候補）",
-          group.lowPriority,
-          true
-        );
-
-      }
-
-    }
-  );
+  }
 
 
-  createRecommendationGroup(
-    "その他",
-    COMMON_RECOMMENDATIONS,
-    true
-  );
-
-}
+  const setting =
+    recommendationSettings[
+    recommendationType
+    ];
 
 
-function createRecommendationGroup(
-  title,
-  skills,
-  lowPriority
-) {
+  /*
+    ◎ 最有力候補
+  */
 
-  const availableSkills =
-    skills.filter(
+  const bestSkills =
+    Array.isArray(
+      setting.best
+    )
+      ? setting.best
+      : [];
+
+
+  /*
+    ○ 候補
+  */
+
+  const candidateSkills =
+    Array.isArray(
+      setting.candidate
+    )
+      ? setting.candidate
+      : [];
+
+
+  /*
+    すでに所持しているスキルは
+    おすすめ欄から除外
+  */
+
+  const availableBestSkills =
+    bestSkills.filter(
       (skillName) =>
         !draftOwnedSkills.includes(
           skillName
@@ -2794,58 +2837,134 @@ function createRecommendationGroup(
     );
 
 
-  if (availableSkills.length === 0) {
-    return;
+  const availableCandidateSkills =
+    candidateSkills.filter(
+      (skillName) =>
+        !draftOwnedSkills.includes(
+          skillName
+        )
+    );
+
+
+  /*
+    ◎
+  */
+
+  if (
+    availableBestSkills.length > 0
+  ) {
+
+    createRecommendationPriorityGroup(
+      "◎ 最有力候補",
+      availableBestSkills,
+      "best"
+    );
+
   }
 
+
+  /*
+    ○
+  */
+
+  if (
+    availableCandidateSkills.length > 0
+  ) {
+
+    createRecommendationPriorityGroup(
+      "○ 候補",
+      availableCandidateSkills,
+      "candidate"
+    );
+
+  }
+
+
+  /*
+    所持済みを除いた結果、
+    何も残らなかった場合
+  */
+
+  if (
+    availableBestSkills.length === 0 &&
+    availableCandidateSkills.length === 0
+  ) {
+
+    const message =
+      document.createElement("p");
+
+    message.className =
+      "empty-message";
+
+    message.textContent =
+      "現在追加できるおすすめスキルはありません。";
+
+
+    recommendedSkillArea.appendChild(
+      message
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   ◎ / ○ グループ作成
+========================================================= */
+
+function createRecommendationPriorityGroup(
+  title,
+  skills,
+  priority
+) {
 
   const group =
     document.createElement("div");
 
   group.className =
-    "recommend-group";
+    "recommend-priority-group";
 
+
+  group.classList.add(
+    priority === "best"
+      ? "best"
+      : "candidate"
+  );
+
+
+  /* =========================
+     タイトル
+  ========================= */
 
   const heading =
     document.createElement("div");
 
   heading.className =
-    "recommend-group-title";
+    "recommend-priority-title";
 
   heading.textContent =
     title;
 
 
+  group.appendChild(
+    heading
+  );
+
+
+  /* =========================
+     可変幅ボタン
+  ========================= */
+
   const list =
     document.createElement("div");
 
   list.className =
-    "recommend-skill-list";
+    "recommend-priority-list";
 
 
-  availableSkills.forEach(
+  skills.forEach(
     (skillName) => {
-
-      const row =
-        document.createElement("div");
-
-      row.className =
-        "recommend-skill-row";
-
-
-      if (lowPriority) {
-        row.classList.add(
-          "low-priority"
-        );
-      }
-
-
-      const text =
-        document.createElement("span");
-
-      text.textContent =
-        skillName;
-
 
       const button =
         document.createElement("button");
@@ -2854,7 +2973,14 @@ function createRecommendationGroup(
         "button";
 
       button.className =
-        "recommend-add-button";
+        "recommend-skill-button";
+
+
+      button.classList.add(
+        priority === "best"
+          ? "best"
+          : "candidate"
+      );
 
 
       const alreadySelected =
@@ -2871,12 +2997,12 @@ function createRecommendationGroup(
         );
 
         button.textContent =
-          "✓ 選択済";
+          "✓ " + skillName;
 
       } else {
 
         button.textContent =
-          "＋追加";
+          skillName;
 
       }
 
@@ -2893,19 +3019,17 @@ function createRecommendationGroup(
       );
 
 
-      row.appendChild(text);
-
-      row.appendChild(button);
-
-      list.appendChild(row);
+      list.appendChild(
+        button
+      );
 
     }
   );
 
 
-  group.appendChild(heading);
-
-  group.appendChild(list);
+  group.appendChild(
+    list
+  );
 
 
   recommendedSkillArea.appendChild(
