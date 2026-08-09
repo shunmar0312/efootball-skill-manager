@@ -492,6 +492,367 @@ const COMMON_RECOMMENDATIONS = [
   "キャプテンシー"
 ];
 
+/* =========================================================
+   おすすめスキル設定 初期値
+
+   best
+   → ◎ 最有力候補
+
+   candidate
+   → ○ 候補
+
+   どちらにも含まれない
+   → 対象外
+========================================================= */
+
+const DEFAULT_RECOMMENDATION_SETTINGS = {
+
+  CF: {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+
+      "ヘッダー",
+      "コントロールカーブ",
+      "ミドルシュート",
+      "アクロバティックシュート",
+      "ワンタッチシュート",
+
+      "エアバトル"
+    ],
+
+    candidate: [
+      "軸裏ターン",
+
+      "アウトスピンキック",
+
+      "コントロールループ",
+      "無回転シュート",
+      "ドロップシュート",
+      "ライジングシュート",
+
+      "チェイシング",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  ST: {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "ルーレット",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+
+      "コントロールカーブ",
+      "ミドルシュート",
+      "ワンタッチシュート"
+    ],
+
+    candidate: [
+      "軸裏ターン",
+
+      "アウトスピンキック",
+
+      "コントロールループ",
+      "アクロバティックシュート",
+
+      "チェイシング",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  "LWG/RWG": {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "ルーレット",
+      "軸裏ターン",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+      "ピンポイントクロス",
+      "アウトスピンキック",
+
+      "コントロールカーブ",
+      "ミドルシュート",
+      "ワンタッチシュート"
+    ],
+
+    candidate: [
+      "チェイシング",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  "LMF/RMF": {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "ルーレット",
+      "軸裏ターン",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+      "ピンポイントクロス",
+      "アウトスピンキック",
+
+      "コントロールカーブ",
+      "ミドルシュート",
+      "ワンタッチシュート"
+    ],
+
+    candidate: [
+      "バックスピンロブ",
+      "低弾道ロブ",
+
+      "マンマーク",
+      "チェイシング",
+      "インターセプト",
+      "ブロッカー",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  OMF: {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "ルーレット",
+      "軸裏ターン",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+      "ピンポイントクロス",
+      "アウトスピンキック",
+
+      "コントロールカーブ",
+      "ミドルシュート",
+      "ワンタッチシュート"
+    ],
+
+    candidate: [
+      "バックスピンロブ",
+      "低弾道ロブ",
+
+      "ヘッダー",
+
+      "マンマーク",
+      "インターセプト",
+      "ブロッカー",
+      "エアバトル",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  CMF: {
+
+    best: [
+      "ダブルタッチ",
+      "エラシコ",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+      "アウトスピンキック"
+    ],
+
+    candidate: [
+      "バックスピンロブ",
+      "低弾道ロブ",
+
+      "ヘッダー",
+      "ミドルシュート",
+
+      "マンマーク",
+      "チェイシング",
+      "インターセプト",
+      "ブロッカー",
+      "エアバトル",
+
+      "スーパーサブ",
+      "闘争心"
+    ]
+
+  },
+
+
+  DMF: {
+
+    best: [
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "ワンタッチパス",
+      "スルーパス",
+      "アウトスピンキック",
+
+      "マンマーク",
+      "インターセプト",
+      "ブロッカー",
+      "エアバトル"
+    ],
+
+    candidate: [
+      "ダブルタッチ",
+      "エラシコ",
+
+      "バックスピンロブ",
+      "低弾道ロブ",
+
+      "ヘッダー",
+
+      "スライディングタックル",
+      "アクロバティッククリア",
+
+      "闘争心"
+    ]
+
+  },
+
+
+  "LSB/RSB": {
+
+    best: [
+      "ワンタッチパス",
+      "スルーパス",
+      "ピンポイントクロス",
+
+      "マンマーク",
+      "インターセプト",
+      "ブロッカー",
+      "スライディングタックル",
+      "アクロバティッククリア"
+    ],
+
+    candidate: [
+      "ダブルタッチ",
+      "エラシコ",
+      "足裏コントロール",
+
+      "ヒールトリック",
+      "バックスピンロブ",
+      "アウトスピンキック",
+      "低弾道ロブ",
+
+      "闘争心"
+    ]
+
+  },
+
+
+  CB: {
+
+    best: [
+      "ワンタッチパス",
+      "スルーパス",
+
+      "マンマーク",
+      "インターセプト",
+      "ブロッカー",
+      "エアバトル",
+      "スライディングタックル",
+      "アクロバティッククリア"
+    ],
+
+    candidate: [
+      "足裏コントロール",
+
+      "バックスピンロブ",
+      "アウトスピンキック",
+      "低弾道ロブ",
+
+      "闘争心"
+    ]
+
+  },
+
+
+  GK: {
+
+    best: [
+      "低弾道パントキック",
+      "高弾道パントキック",
+      "GKロングスロー",
+      "PKストッパー"
+    ],
+
+    candidate: [
+      "ワンタッチパス",
+      "スルーパス",
+      "バックスピンロブ",
+      "低弾道ロブ",
+
+      "インターセプト",
+      "エアバトル",
+      "スライディングタックル",
+      "アクロバティッククリア",
+
+      "キャプテンシー"
+    ]
+
+  }
+
+};
+
+
+/* =========================================================
+   おすすめ設定 ポジション分類
+========================================================= */
+
+const RECOMMENDATION_POSITION_TYPES = [
+  "CF",
+  "ST",
+  "LWG/RWG",
+  "LMF/RMF",
+  "OMF",
+  "CMF",
+  "DMF",
+  "LSB/RSB",
+  "CB",
+  "GK"
+];
+
 
 /* =========================================================
    DOM
@@ -658,6 +1019,19 @@ const resetDataButton =
 
 let players = [];
 
+
+/*
+  ポジション別おすすめ設定
+
+  初回は初期値。
+  保存済み設定がある場合は
+  localStorageから読み込む。
+*/
+
+let recommendationSettings =
+  createDefaultRecommendationSettings();
+
+
 let editingPlayerId = null;
 
 let draftOwnedSkills = [];
@@ -679,6 +1053,8 @@ document.addEventListener(
   () => {
 
     loadPlayers();
+
+    loadRecommendationSettings();
 
     renderPlayerList();
 
@@ -2363,7 +2739,7 @@ function renderRecommendations() {
 
   const groups =
     RECOMMENDATIONS[
-      recommendationType
+    recommendationType
     ] || [];
 
 
@@ -2828,14 +3204,14 @@ function getCurrentSkills(player) {
       player.additionalSkills
     )
       ? player.additionalSkills
-          .filter(
-            (skill) =>
-              skill.acquired === true
-          )
-          .map(
-            (skill) =>
-              skill.name
-          )
+        .filter(
+          (skill) =>
+            skill.acquired === true
+        )
+        .map(
+          (skill) =>
+            skill.name
+        )
       : [];
 
 
@@ -3388,10 +3764,10 @@ function renderMaterialMatching() {
 
       }
     )
-    .filter(
-      (result) =>
-        result.wantedSkills.length > 0
-    );
+      .filter(
+        (result) =>
+          result.wantedSkills.length > 0
+      );
 
 
   if (results.length === 0) {
@@ -3558,6 +3934,54 @@ function createMaterialMatchCard(
 function setupRecommendationSettings() {
 
   if (
+    recommendationPositionSelect
+  ) {
+
+    /*
+      HTML側に古い
+      CF / WG / MF / SB...
+      が残っていても
+      JS側で10分類に作り直す
+    */
+
+    recommendationPositionSelect.innerHTML =
+      "";
+
+
+    RECOMMENDATION_POSITION_TYPES.forEach(
+      (positionType) => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          positionType;
+
+        option.textContent =
+          positionType;
+
+
+        recommendationPositionSelect.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+    recommendationPositionSelect.value =
+      "CF";
+
+
+    recommendationPositionSelect.addEventListener(
+      "change",
+      renderRecommendationSettings
+    );
+
+  }
+
+
+  if (
     openRecommendationSettingsButton
   ) {
 
@@ -3568,6 +3992,7 @@ function setupRecommendationSettings() {
         showScreen(
           "recommendationSettingsScreen"
         );
+
 
         renderRecommendationSettings();
 
@@ -3594,20 +4019,12 @@ function setupRecommendationSettings() {
 
   }
 
-
-  if (
-    recommendationPositionSelect
-  ) {
-
-    recommendationPositionSelect.addEventListener(
-      "change",
-      renderRecommendationSettings
-    );
-
-  }
-
 }
 
+
+/* =========================================================
+   おすすめ設定表示
+========================================================= */
 
 function renderRecommendationSettings() {
 
@@ -3615,7 +4032,9 @@ function renderRecommendationSettings() {
     !recommendationSettingsList ||
     !recommendationPositionSelect
   ) {
+
     return;
+
   }
 
 
@@ -3623,29 +4042,65 @@ function renderRecommendationSettings() {
     "";
 
 
-  const type =
+  const positionType =
     recommendationPositionSelect.value;
 
 
-  const groups =
-    RECOMMENDATIONS[type] || [];
+  const categories = [
+    "ドリブル",
+    "パス",
+    "シュート",
+    "ディフェンス",
+    "GK",
+    "その他"
+  ];
 
 
-  groups.forEach(
-    (group) => {
+  categories.forEach(
+    (category) => {
+
+      /*
+        特殊スキルはおすすめ追加候補には
+        使用できないので除外
+      */
+
+      const categorySkills =
+        SKILLS.filter(
+          (skill) => {
+
+            return (
+              skill.type === "normal" &&
+              skill.category === category
+            );
+
+          }
+        );
+
+
+      if (
+        categorySkills.length === 0
+      ) {
+
+        return;
+
+      }
+
 
       const container =
         document.createElement("div");
 
       container.className =
-        "form-section";
+        "recommend-setting-category";
 
 
       const title =
         document.createElement("h3");
 
+      title.className =
+        "recommend-setting-category-title";
+
       title.textContent =
-        group.title;
+        "■ " + category;
 
 
       container.appendChild(
@@ -3653,45 +4108,14 @@ function renderRecommendationSettings() {
       );
 
 
-      const allSkills = [
-
-        ...(group.skills || []).map(
-          (name) => ({
-            name,
-            low: false
-          })
-        ),
-
-        ...(group.lowPriority || []).map(
-          (name) => ({
-            name,
-            low: true
-          })
-        )
-
-      ];
-
-
-      allSkills.forEach(
+      categorySkills.forEach(
         (skill) => {
 
           const row =
-            document.createElement("div");
-
-          row.className =
-            "skill-row";
-
-
-          if (skill.low) {
-            row.style.opacity =
-              "0.65";
-          }
-
-
-          row.textContent =
-            skill.low
-              ? skill.name + "（候補）"
-              : skill.name;
+            createRecommendationSettingRow(
+              positionType,
+              skill.name
+            );
 
 
           container.appendChild(
@@ -3708,6 +4132,459 @@ function renderRecommendationSettings() {
 
     }
   );
+
+}
+
+
+/* =========================================================
+   おすすめ設定 1スキル
+========================================================= */
+
+function createRecommendationSettingRow(
+  positionType,
+  skillName
+) {
+
+  const row =
+    document.createElement("div");
+
+  row.className =
+    "recommend-setting-row";
+
+
+  const skillNameElement =
+    document.createElement("div");
+
+  skillNameElement.className =
+    "recommend-setting-skill-name";
+
+  skillNameElement.textContent =
+    skillName;
+
+
+  const buttons =
+    document.createElement("div");
+
+  buttons.className =
+    "recommend-setting-buttons";
+
+
+  const currentStatus =
+    getRecommendationStatus(
+      positionType,
+      skillName
+    );
+
+
+  const statusOptions = [
+
+    {
+      value:
+        "none",
+
+      label:
+        "対象外"
+    },
+
+    {
+      value:
+        "candidate",
+
+      label:
+        "○ 候補"
+    },
+
+    {
+      value:
+        "best",
+
+      label:
+        "◎ 最有力"
+    }
+
+  ];
+
+
+  statusOptions.forEach(
+    (statusOption) => {
+
+      const button =
+        document.createElement("button");
+
+      button.type =
+        "button";
+
+      button.className =
+        "recommend-setting-status-button";
+
+      button.dataset.status =
+        statusOption.value;
+
+      button.textContent =
+        statusOption.label;
+
+
+      if (
+        currentStatus ===
+        statusOption.value
+      ) {
+
+        button.classList.add(
+          "selected"
+        );
+
+      }
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          setRecommendationStatus(
+            positionType,
+            skillName,
+            statusOption.value
+          );
+
+
+          saveRecommendationSettings();
+
+
+          /*
+            その行だけ見た目更新
+          */
+
+          buttons
+            .querySelectorAll(
+              ".recommend-setting-status-button"
+            )
+            .forEach(
+              (statusButton) => {
+
+                statusButton.classList.remove(
+                  "selected"
+                );
+
+              }
+            );
+
+
+          button.classList.add(
+            "selected"
+          );
+
+        }
+      );
+
+
+      buttons.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  row.appendChild(
+    skillNameElement
+  );
+
+  row.appendChild(
+    buttons
+  );
+
+
+  return row;
+
+}
+
+
+/* =========================================================
+   おすすめ状態取得
+========================================================= */
+
+function getRecommendationStatus(
+  positionType,
+  skillName
+) {
+
+  const setting =
+    recommendationSettings[
+    positionType
+    ];
+
+
+  if (!setting) {
+
+    return "none";
+
+  }
+
+
+  if (
+    Array.isArray(
+      setting.best
+    ) &&
+    setting.best.includes(
+      skillName
+    )
+  ) {
+
+    return "best";
+
+  }
+
+
+  if (
+    Array.isArray(
+      setting.candidate
+    ) &&
+    setting.candidate.includes(
+      skillName
+    )
+  ) {
+
+    return "candidate";
+
+  }
+
+
+  return "none";
+
+}
+
+
+/* =========================================================
+   おすすめ状態変更
+========================================================= */
+
+function setRecommendationStatus(
+  positionType,
+  skillName,
+  status
+) {
+
+  if (
+    !recommendationSettings[
+    positionType
+    ]
+  ) {
+
+    recommendationSettings[
+      positionType
+    ] = {
+
+      best:
+        [],
+
+      candidate:
+        []
+
+    };
+
+  }
+
+
+  const setting =
+    recommendationSettings[
+    positionType
+    ];
+
+
+  /*
+    一旦どちらからも削除
+  */
+
+  setting.best =
+    setting.best.filter(
+      (name) =>
+        name !== skillName
+    );
+
+
+  setting.candidate =
+    setting.candidate.filter(
+      (name) =>
+        name !== skillName
+    );
+
+
+  /*
+    選択状態に応じて追加
+  */
+
+  if (
+    status === "best"
+  ) {
+
+    setting.best.push(
+      skillName
+    );
+
+  }
+
+
+  if (
+    status === "candidate"
+  ) {
+
+    setting.candidate.push(
+      skillName
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   初期おすすめ設定作成
+========================================================= */
+
+function createDefaultRecommendationSettings() {
+
+  return JSON.parse(
+    JSON.stringify(
+      DEFAULT_RECOMMENDATION_SETTINGS
+    )
+  );
+
+}
+
+
+/* =========================================================
+   おすすめ設定保存
+========================================================= */
+
+function saveRecommendationSettings() {
+
+  try {
+
+    localStorage.setItem(
+      "efootballSkillManagerRecommendationSettings",
+      JSON.stringify(
+        recommendationSettings
+      )
+    );
+
+  } catch (error) {
+
+    console.error(
+      "おすすめスキル設定の保存に失敗しました。",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   おすすめ設定読込
+========================================================= */
+
+function loadRecommendationSettings() {
+
+  const savedSettings =
+    localStorage.getItem(
+      "efootballSkillManagerRecommendationSettings"
+    );
+
+
+  /*
+    保存済み設定なし
+    ↓
+    初期値を使用
+  */
+
+  if (!savedSettings) {
+
+    recommendationSettings =
+      createDefaultRecommendationSettings();
+
+    return;
+
+  }
+
+
+  try {
+
+    const parsed =
+      JSON.parse(
+        savedSettings
+      );
+
+
+    if (
+      !parsed ||
+      typeof parsed !== "object"
+    ) {
+
+      throw new Error(
+        "おすすめ設定の形式が不正です。"
+      );
+
+    }
+
+
+    /*
+      新しいポジションが追加された場合でも
+      初期値をベースに保存値を上書きする
+    */
+
+    const defaults =
+      createDefaultRecommendationSettings();
+
+
+    RECOMMENDATION_POSITION_TYPES.forEach(
+      (positionType) => {
+
+        if (
+          parsed[positionType]
+        ) {
+
+          defaults[
+            positionType
+          ] = {
+
+            best:
+              Array.isArray(
+                parsed[positionType].best
+              )
+                ? parsed[positionType].best
+                : [],
+
+            candidate:
+              Array.isArray(
+                parsed[positionType].candidate
+              )
+                ? parsed[positionType].candidate
+                : []
+
+          };
+
+        }
+
+      }
+    );
+
+
+    recommendationSettings =
+      defaults;
+
+
+  } catch (error) {
+
+    console.error(
+      "おすすめスキル設定の読み込みに失敗しました。",
+      error
+    );
+
+
+    recommendationSettings =
+      createDefaultRecommendationSettings();
+
+  }
 
 }
 
@@ -3800,22 +4677,22 @@ function loadPlayers() {
               player.ownedSkills
             )
               ? player.ownedSkills
-                  .map(
-                    (skill) => {
+                .map(
+                  (skill) => {
 
-                      if (
-                        typeof skill ===
-                        "string"
-                      ) {
-                        return skill;
-                      }
-
-
-                      return skill.name;
-
+                    if (
+                      typeof skill ===
+                      "string"
+                    ) {
+                      return skill;
                     }
-                  )
-                  .filter(Boolean)
+
+
+                    return skill.name;
+
+                  }
+                )
+                .filter(Boolean)
               : [];
 
 
@@ -3824,42 +4701,42 @@ function loadPlayers() {
               player.additionalSkills
             )
               ? player.additionalSkills
-                  .map(
-                    (skill) => {
+                .map(
+                  (skill) => {
 
-                      if (
-                        typeof skill ===
-                        "string"
-                      ) {
-
-                        return {
-                          name: skill,
-                          acquired: false
-                        };
-
-                      }
-
+                    if (
+                      typeof skill ===
+                      "string"
+                    ) {
 
                       return {
-
-                        name:
-                          skill.name,
-
-                        acquired:
-                          Boolean(
-                            skill.acquired
-                          )
-
+                        name: skill,
+                        acquired: false
                       };
 
                     }
-                  )
-                  .filter(
-                    (skill) =>
-                      Boolean(
-                        skill.name
-                      )
-                  )
+
+
+                    return {
+
+                      name:
+                        skill.name,
+
+                      acquired:
+                        Boolean(
+                          skill.acquired
+                        )
+
+                    };
+
+                  }
+                )
+                .filter(
+                  (skill) =>
+                    Boolean(
+                      skill.name
+                    )
+                )
               : [];
 
 
@@ -4267,39 +5144,39 @@ function normalizeImportedPlayer(
       player.ownedSkills
     )
       ? player.ownedSkills
-          .map(
-            (skill) => {
+        .map(
+          (skill) => {
 
-              if (
-                typeof skill ===
-                "string"
-              ) {
+            if (
+              typeof skill ===
+              "string"
+            ) {
 
-                return skill;
-
-              }
-
-
-              if (
-                skill &&
-                typeof skill.name ===
-                  "string"
-              ) {
-
-                return skill.name;
-
-              }
-
-
-              return null;
+              return skill;
 
             }
-          )
-          .filter(Boolean)
-          .slice(
-            0,
-            10
-          )
+
+
+            if (
+              skill &&
+              typeof skill.name ===
+              "string"
+            ) {
+
+              return skill.name;
+
+            }
+
+
+            return null;
+
+          }
+        )
+        .filter(Boolean)
+        .slice(
+          0,
+          10
+        )
 
       : [];
 
@@ -4314,67 +5191,67 @@ function normalizeImportedPlayer(
       player.additionalSkills
     )
       ? player.additionalSkills
-          .map(
-            (skill) => {
+        .map(
+          (skill) => {
 
-              /*
-                古い形式
+            /*
+              古い形式
 
-                "ワンタッチパス"
-              */
+              "ワンタッチパス"
+            */
 
-              if (
-                typeof skill ===
-                "string"
-              ) {
+            if (
+              typeof skill ===
+              "string"
+            ) {
 
-                return {
+              return {
 
-                  name:
-                    skill,
+                name:
+                  skill,
 
-                  acquired:
-                    false
+                acquired:
+                  false
 
-                };
-
-              }
-
-
-              /*
-                現在形式
-              */
-
-              if (
-                skill &&
-                typeof skill.name ===
-                  "string"
-              ) {
-
-                return {
-
-                  name:
-                    skill.name,
-
-                  acquired:
-                    Boolean(
-                      skill.acquired
-                    )
-
-                };
-
-              }
-
-
-              return null;
+              };
 
             }
-          )
-          .filter(Boolean)
-          .slice(
-            0,
-            5
-          )
+
+
+            /*
+              現在形式
+            */
+
+            if (
+              skill &&
+              typeof skill.name ===
+              "string"
+            ) {
+
+              return {
+
+                name:
+                  skill.name,
+
+                acquired:
+                  Boolean(
+                    skill.acquired
+                  )
+
+              };
+
+            }
+
+
+            return null;
+
+          }
+        )
+        .filter(Boolean)
+        .slice(
+          0,
+          5
+        )
 
       : [];
 
@@ -4383,20 +5260,20 @@ function normalizeImportedPlayer(
 
     id:
       player &&
-      player.id
+        player.id
         ? player.id
         : createPlayerId(),
 
     name:
       player &&
-      typeof player.name ===
+        typeof player.name ===
         "string"
         ? player.name
         : "",
 
     position:
       player &&
-      typeof player.position ===
+        typeof player.position ===
         "string"
         ? player.position
         : "",
@@ -4415,7 +5292,7 @@ function normalizeImportedPlayer(
 
     createdAt:
       player &&
-      player.createdAt
+        player.createdAt
         ? player.createdAt
         : new Date().toISOString()
 
