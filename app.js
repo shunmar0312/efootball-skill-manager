@@ -4262,6 +4262,7 @@ function renderRecommendationSettings() {
 
 /* =========================================================
    おすすめ設定 1スキル
+   ドロップダウン形式
 ========================================================= */
 
 function createRecommendationSettingRow(
@@ -4276,6 +4277,10 @@ function createRecommendationSettingRow(
     "recommend-setting-row";
 
 
+  /* =========================
+     スキル名
+  ========================= */
+
   const skillNameElement =
     document.createElement("div");
 
@@ -4286,11 +4291,35 @@ function createRecommendationSettingRow(
     skillName;
 
 
-  const buttons =
-    document.createElement("div");
+  /* =========================
+     設定ドロップダウン
+  ========================= */
 
-  buttons.className =
-    "recommend-setting-buttons";
+  const select =
+    document.createElement("select");
+
+  select.className =
+    "recommend-setting-select";
+
+
+  const statusOptions = [
+
+    {
+      value: "none",
+      label: "対象外"
+    },
+
+    {
+      value: "candidate",
+      label: "○ 候補"
+    },
+
+    {
+      value: "best",
+      label: "◎ 最有力"
+    }
+
+  ];
 
 
   const currentStatus =
@@ -4300,51 +4329,16 @@ function createRecommendationSettingRow(
     );
 
 
-  const statusOptions = [
-
-    {
-      value:
-        "none",
-
-      label:
-        "対象外"
-    },
-
-    {
-      value:
-        "candidate",
-
-      label:
-        "○ 候補"
-    },
-
-    {
-      value:
-        "best",
-
-      label:
-        "◎ 最有力"
-    }
-
-  ];
-
-
   statusOptions.forEach(
     (statusOption) => {
 
-      const button =
-        document.createElement("button");
+      const option =
+        document.createElement("option");
 
-      button.type =
-        "button";
-
-      button.className =
-        "recommend-setting-status-button";
-
-      button.dataset.status =
+      option.value =
         statusOption.value;
 
-      button.textContent =
+      option.textContent =
         statusOption.label;
 
 
@@ -4353,57 +4347,36 @@ function createRecommendationSettingRow(
         statusOption.value
       ) {
 
-        button.classList.add(
-          "selected"
-        );
+        option.selected =
+          true;
 
       }
 
 
-      button.addEventListener(
-        "click",
-        () => {
+      select.appendChild(
+        option
+      );
 
-          setRecommendationStatus(
-            positionType,
-            skillName,
-            statusOption.value
-          );
+    }
+  );
 
 
-          saveRecommendationSettings();
+  /* =========================
+     変更時に即保存
+  ========================= */
 
+  select.addEventListener(
+    "change",
+    () => {
 
-          /*
-            その行だけ見た目更新
-          */
-
-          buttons
-            .querySelectorAll(
-              ".recommend-setting-status-button"
-            )
-            .forEach(
-              (statusButton) => {
-
-                statusButton.classList.remove(
-                  "selected"
-                );
-
-              }
-            );
-
-
-          button.classList.add(
-            "selected"
-          );
-
-        }
+      setRecommendationStatus(
+        positionType,
+        skillName,
+        select.value
       );
 
 
-      buttons.appendChild(
-        button
-      );
+      saveRecommendationSettings();
 
     }
   );
@@ -4414,7 +4387,7 @@ function createRecommendationSettingRow(
   );
 
   row.appendChild(
-    buttons
+    select
   );
 
 
