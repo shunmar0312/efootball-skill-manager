@@ -1899,8 +1899,7 @@ function getSelectableSkills() {
 
 function renderSkillSelectorList() {
 
-  skillSelectorList.innerHTML =
-    "";
+  skillSelectorList.innerHTML = "";
 
 
   const searchText =
@@ -1964,90 +1963,193 @@ function renderSkillSelectorList() {
       }
 
 
+      /* =========================
+         カテゴリ単位
+      ========================= */
+
+      const categoryBlock =
+        document.createElement("div");
+
+      categoryBlock.className =
+        "skill-category-block";
+
+
       const heading =
         document.createElement("div");
 
       heading.className =
-        "recommend-group-title";
+        "skill-category-title";
 
       heading.textContent =
         "■ " + category;
 
 
-      skillSelectorList.appendChild(
+      categoryBlock.appendChild(
         heading
       );
+
+
+      /* =========================
+         スキルボタン配置
+      ========================= */
+
+      const grid =
+        document.createElement("div");
+
+      grid.className =
+        "skill-selector-grid";
 
 
       categorySkills.forEach(
         (skill) => {
 
-          const label =
-            document.createElement("label");
+          const button =
+            document.createElement("button");
 
-          label.className =
-            "skill-selector-item";
+          button.type =
+            "button";
+
+          button.className =
+            "skill-select-button";
 
 
-          const checkbox =
-            document.createElement("input");
-
-          checkbox.type =
-            "checkbox";
-
-          checkbox.checked =
+          const selected =
             temporarySelectedSkills.has(
               skill.name
             );
 
 
-          checkbox.addEventListener(
-            "change",
+          if (selected) {
+
+            button.classList.add(
+              "selected"
+            );
+
+          }
+
+
+          /* スキル名 */
+
+          const name =
+            document.createElement("span");
+
+          name.className =
+            "skill-select-name";
+
+          name.textContent =
+            skill.name;
+
+
+          button.appendChild(
+            name
+          );
+
+
+          /* 特殊スキル */
+
+          if (
+            skill.type === "special"
+          ) {
+
+            const specialLabel =
+              document.createElement("span");
+
+            specialLabel.className =
+              "skill-special-label";
+
+            specialLabel.textContent =
+              "特殊スキル";
+
+
+            button.appendChild(
+              specialLabel
+            );
+
+          }
+
+
+          /* =========================
+             選択 / 解除
+          ========================= */
+
+          button.addEventListener(
+            "click",
             () => {
 
-              handleTemporarySkillSelection(
-                skill,
-                checkbox
+              const currentlySelected =
+                temporarySelectedSkills.has(
+                  skill.name
+                );
+
+
+              /* すでに選択済みなら解除 */
+
+              if (currentlySelected) {
+
+                temporarySelectedSkills.delete(
+                  skill.name
+                );
+
+                button.classList.remove(
+                  "selected"
+                );
+
+                return;
+
+              }
+
+
+              /* 最大数 */
+
+              const maxCount =
+                skillSelectorMode === "owned"
+                  ? 10
+                  : 5;
+
+
+              if (
+                temporarySelectedSkills.size >=
+                maxCount
+              ) {
+
+                alert(
+                  skillSelectorMode === "owned"
+                    ? "所持スキルは最大10個までです。"
+                    : "追加したいスキルは最大5個までです。"
+                );
+
+                return;
+
+              }
+
+
+              temporarySelectedSkills.add(
+                skill.name
+              );
+
+              button.classList.add(
+                "selected"
               );
 
             }
           );
 
 
-          const text =
-            document.createElement("span");
-
-
-          if (
-            skill.type === "special"
-          ) {
-
-            text.textContent =
-              skill.name +
-              " 【特殊・追加不可】";
-
-          } else {
-
-            text.textContent =
-              skill.name;
-
-          }
-
-
-          label.appendChild(
-            checkbox
-          );
-
-          label.appendChild(
-            text
-          );
-
-
-          skillSelectorList.appendChild(
-            label
+          grid.appendChild(
+            button
           );
 
         }
+      );
+
+
+      categoryBlock.appendChild(
+        grid
+      );
+
+
+      skillSelectorList.appendChild(
+        categoryBlock
       );
 
     }

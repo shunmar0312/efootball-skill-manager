@@ -890,31 +890,104 @@ label {
 .skill-selector-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 22px;
 
-  max-height: 50vh;
+  max-height: 56vh;
 
   overflow-y: auto;
 }
 
-.skill-selector-item {
+
+/* =========================
+   Skill category
+========================= */
+
+.skill-category-block {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
-
-  min-height: 44px;
-
-  padding: 9px 10px;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
 }
 
-.skill-selector-item input {
-  width: 20px;
-  height: 20px;
+.skill-category-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #374151;
+}
 
-  accent-color: #2563eb;
+
+/* =========================
+   Skill selector buttons
+========================= */
+
+.skill-selector-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-select-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1 1 auto;
+
+  min-width: 105px;
+  min-height: 50px;
+
+  padding: 9px 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  background: #fff;
+  color: #374151;
+
+  text-align: center;
+
+  font-weight: 700;
+}
+
+.skill-select-button:active {
+  transform: scale(0.98);
+}
+
+
+/* 選択中 */
+
+.skill-select-button.selected {
+  border-color: #2563eb;
+
+  background: #2563eb;
+  color: #fff;
+}
+
+
+/* スキル名 */
+
+.skill-select-name {
+  font-size: 14px;
+  line-height: 1.35;
+
+  white-space: normal;
+  word-break: keep-all;
+}
+
+
+/* 特殊スキル */
+
+.skill-special-label {
+  margin-top: 3px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color: #7c3aed;
+}
+
+.skill-select-button.selected .skill-special-label {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .modal-actions {
@@ -971,6 +1044,24 @@ label {
 
   .screen-header {
     align-items: flex-start;
+  }
+
+
+  /* スキル選択 */
+
+  .skill-selector-grid {
+    gap: 7px;
+  }
+
+  .skill-select-button {
+    min-width: 95px;
+    min-height: 48px;
+
+    padding: 8px 9px;
+  }
+
+  .skill-select-name {
+    font-size: 13px;
   }
 
 }
