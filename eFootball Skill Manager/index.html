@@ -1,0 +1,717 @@
+<!--
+  eFootball Skill Manager
+  Copyright (c) 2026 numa. All Rights Reserved.
+
+  This is an unofficial personal tool.
+  This project is not affiliated with or endorsed by KONAMI.
+-->
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>eFootball Skill Manager</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =========================
+         ヘッダー
+    ========================== -->
+    <header class="app-header">
+      <h1>eFootball Skill Manager</h1>
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="app-main">
+
+
+      <!-- ==================================================
+           1. 選手一覧画面
+      =================================================== -->
+      <section id="playerListScreen" class="screen active">
+
+        <div class="screen-header">
+          <h2>選手</h2>
+
+          <button
+            id="addPlayerButton"
+            class="primary-button"
+            type="button">
+            ＋ 選手追加
+          </button>
+        </div>
+
+
+        <!-- 選手検索 -->
+        <div class="search-area">
+          <label for="playerSearch">選手検索</label>
+
+          <input
+            id="playerSearch"
+            type="search"
+            placeholder="選手名を入力">
+        </div>
+
+
+        <!-- 選手一覧 -->
+        <div id="playerList" class="player-list">
+
+          <!--
+            JavaScriptで選手カードを生成予定
+
+            例：
+
+            <button class="player-card" type="button">
+              <div>
+                <strong>選手A</strong>
+                <span>CF</span>
+              </div>
+
+              <div>
+                追加スキル 3 / 5
+              </div>
+
+              <div>
+                ⭐ 特別強化用
+              </div>
+            </button>
+          -->
+
+          <p id="playerEmptyMessage" class="empty-message">
+            登録されている選手はいません。
+          </p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==================================================
+           2. 選手追加・編集画面
+      =================================================== -->
+      <section id="playerEditScreen" class="screen">
+
+        <div class="screen-header">
+
+          <button
+            id="backToPlayerListButton"
+            class="back-button"
+            type="button">
+            ＜ 戻る
+          </button>
+
+          <h2 id="playerEditTitle">
+            選手追加
+          </h2>
+
+        </div>
+
+
+        <form id="playerForm">
+
+
+          <!-- 選手名 -->
+          <section class="form-section">
+
+            <h3>基本情報</h3>
+
+            <label for="playerName">
+              選手名
+            </label>
+
+            <input
+              id="playerName"
+              name="playerName"
+              type="text"
+              maxlength="50"
+              placeholder="選手名を入力"
+              required>
+
+          </section>
+
+
+
+          <!-- 登録ポジション -->
+          <section class="form-section">
+
+            <h3>登録ポジション</h3>
+
+            <div
+              id="positionSelector"
+              class="position-selector">
+
+              <button type="button" data-position="CF">CF</button>
+              <button type="button" data-position="ST">ST</button>
+
+              <button type="button" data-position="LWG">LWG</button>
+              <button type="button" data-position="RWG">RWG</button>
+
+              <button type="button" data-position="LMF">LMF</button>
+              <button type="button" data-position="RMF">RMF</button>
+
+              <button type="button" data-position="OMF">OMF</button>
+              <button type="button" data-position="CMF">CMF</button>
+              <button type="button" data-position="DMF">DMF</button>
+
+              <button type="button" data-position="LSB">LSB</button>
+              <button type="button" data-position="RSB">RSB</button>
+
+              <button type="button" data-position="CB">CB</button>
+
+              <button type="button" data-position="GK">GK</button>
+
+            </div>
+
+            <input
+              id="selectedPosition"
+              name="selectedPosition"
+              type="hidden">
+
+          </section>
+
+
+
+          <!-- 所持スキル -->
+          <section class="form-section">
+
+            <div class="section-title-row">
+
+              <h3>所持スキル</h3>
+
+              <span id="ownedSkillCount">
+                0 / 10
+              </span>
+
+            </div>
+
+
+            <p class="section-description">
+              選手が元から所持しているスキルを最大10個登録します。
+            </p>
+
+
+            <div
+              id="ownedSkillList"
+              class="selected-skill-list">
+
+              <p class="empty-message">
+                所持スキルは選択されていません。
+              </p>
+
+            </div>
+
+
+            <button
+              id="openOwnedSkillSelectorButton"
+              class="secondary-button"
+              type="button">
+              ＋ 所持スキルを選択
+            </button>
+
+          </section>
+
+
+
+          <!-- 追加したいスキル -->
+          <section class="form-section">
+
+            <div class="section-title-row">
+
+              <h3>追加したいスキル</h3>
+
+              <span id="additionalSkillCount">
+                0 / 5
+              </span>
+
+            </div>
+
+
+            <p class="section-description">
+              今後追加したいスキルを最大5個登録します。
+            </p>
+
+
+            <div
+              id="additionalSkillList"
+              class="selected-skill-list">
+
+              <p class="empty-message">
+                追加したいスキルは選択されていません。
+              </p>
+
+            </div>
+
+
+            <button
+              id="openAdditionalSkillSelectorButton"
+              class="secondary-button"
+              type="button">
+              ＋ 追加スキルを選択
+            </button>
+
+          </section>
+
+
+
+          <!-- ポジション別おすすめ -->
+          <section class="form-section">
+
+            <div class="section-title-row">
+
+              <h3>おすすめ追加スキル</h3>
+
+              <span id="recommendPositionLabel">
+                ポジション未選択
+              </span>
+
+            </div>
+
+
+            <p class="section-description">
+              登録ポジションに応じたおすすめ候補を表示します。
+            </p>
+
+
+            <div
+              id="recommendedSkillArea"
+              class="recommended-skill-area">
+
+              <p class="empty-message">
+                ポジションを選択してください。
+              </p>
+
+            </div>
+
+          </section>
+
+
+
+          <!-- 特別強化 -->
+          <section class="form-section">
+
+            <h3>特別強化</h3>
+
+            <label
+              class="toggle-row"
+              for="specialTrainingPlayer">
+
+              <span>
+                特別強化用選手として登録
+              </span>
+
+              <input
+                id="specialTrainingPlayer"
+                name="specialTrainingPlayer"
+                type="checkbox">
+
+            </label>
+
+          </section>
+
+
+
+          <!-- 保存 -->
+          <div class="form-actions">
+
+            <button
+              id="savePlayerButton"
+              class="primary-button large-button"
+              type="submit">
+              保存
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+
+
+      <!-- ==================================================
+           3. マッチング画面
+      =================================================== -->
+      <section id="matchingScreen" class="screen">
+
+        <div class="screen-header">
+          <h2>マッチング</h2>
+        </div>
+
+
+        <!-- マッチングモード -->
+        <div class="matching-mode-tabs">
+
+          <button
+            id="targetPlayerMatchingTab"
+            class="matching-tab active"
+            type="button">
+            強化したい選手
+          </button>
+
+          <button
+            id="materialPlayerMatchingTab"
+            class="matching-tab"
+            type="button">
+            素材から探す
+          </button>
+
+        </div>
+
+
+
+        <!-- 強化したい選手から探す -->
+        <div
+          id="targetPlayerMatchingPanel"
+          class="matching-panel active">
+
+          <label for="matchingTargetPlayer">
+            強化したい選手
+          </label>
+
+          <select id="matchingTargetPlayer">
+            <option value="">
+              選手を選択
+            </option>
+          </select>
+
+
+          <section class="matching-section">
+
+            <h3>欲しいスキル</h3>
+
+            <div id="targetWantedSkillList">
+
+              <p class="empty-message">
+                選手を選択してください。
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <section class="matching-section">
+
+            <h3>特別強化候補</h3>
+
+            <div id="targetMatchingResult">
+
+              <p class="empty-message">
+                マッチング結果はありません。
+              </p>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+
+        <!-- 素材から探す -->
+        <div
+          id="materialPlayerMatchingPanel"
+          class="matching-panel">
+
+          <label for="matchingMaterialPlayer">
+            特別強化用選手
+          </label>
+
+          <select id="matchingMaterialPlayer">
+            <option value="">
+              選手を選択
+            </option>
+          </select>
+
+
+          <section class="matching-section">
+
+            <h3>現在持っているスキル</h3>
+
+            <div id="materialOwnedSkillList">
+
+              <p class="empty-message">
+                選手を選択してください。
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <section class="matching-section">
+
+            <h3>使用候補</h3>
+
+            <div id="materialMatchingResult">
+
+              <p class="empty-message">
+                マッチング結果はありません。
+              </p>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==================================================
+           4. 設定画面
+      =================================================== -->
+      <section id="settingsScreen" class="screen">
+
+        <div class="screen-header">
+          <h2>設定</h2>
+        </div>
+
+
+        <!-- おすすめスキル -->
+        <section class="settings-section">
+
+          <h3>おすすめスキル</h3>
+
+          <button
+            id="openRecommendationSettingsButton"
+            class="settings-button"
+            type="button">
+
+            ポジション別おすすめスキルを見る
+            <span>＞</span>
+
+          </button>
+
+        </section>
+
+
+        <!-- データ管理 -->
+        <section class="settings-section">
+
+          <h3>データ管理</h3>
+
+          <button
+            id="exportDataButton"
+            class="settings-button"
+            type="button">
+            データを書き出す
+          </button>
+
+
+          <label
+            class="settings-button file-button"
+            for="importDataInput">
+
+            データを読み込む
+
+          </label>
+
+          <input
+            id="importDataInput"
+            type="file"
+            accept=".json,application/json"
+            hidden>
+
+
+          <button
+            id="resetDataButton"
+            class="danger-button"
+            type="button">
+            全データを初期化
+          </button>
+
+        </section>
+
+      </section>
+
+
+
+      <!-- ==================================================
+           5. おすすめスキル設定画面
+      =================================================== -->
+      <section id="recommendationSettingsScreen" class="screen">
+
+        <div class="screen-header">
+
+          <button
+            id="backToSettingsButton"
+            class="back-button"
+            type="button">
+            ＜ 戻る
+          </button>
+
+          <h2>
+            おすすめスキル
+          </h2>
+
+        </div>
+
+
+        <label for="recommendationPositionSelect">
+          ポジション
+        </label>
+
+        <select id="recommendationPositionSelect">
+
+          <option value="CF">CF / ST</option>
+          <option value="WG">LWG / RWG</option>
+          <option value="MF">LMF / RMF / OMF / CMF / DMF</option>
+          <option value="SB">LSB / RSB</option>
+          <option value="CB">CB</option>
+          <option value="GK">GK</option>
+
+        </select>
+
+
+        <div id="recommendationSettingsList">
+
+          <!-- JavaScriptでおすすめスキルを表示 -->
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         下部ナビゲーション
+    ========================== -->
+    <nav class="bottom-navigation">
+
+      <button
+        id="playerNavButton"
+        class="nav-button active"
+        type="button"
+        data-screen="playerListScreen">
+
+        <span class="nav-icon">👤</span>
+        <span>選手</span>
+
+      </button>
+
+
+      <button
+        id="matchingNavButton"
+        class="nav-button"
+        type="button"
+        data-screen="matchingScreen">
+
+        <span class="nav-icon">🔄</span>
+        <span>マッチング</span>
+
+      </button>
+
+
+      <button
+        id="settingsNavButton"
+        class="nav-button"
+        type="button"
+        data-screen="settingsScreen">
+
+        <span class="nav-icon">⚙️</span>
+        <span>設定</span>
+
+      </button>
+
+    </nav>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       スキル選択モーダル
+  =================================================== -->
+  <div
+    id="skillSelectorModal"
+    class="modal"
+    aria-hidden="true">
+
+    <div class="modal-overlay"></div>
+
+    <div
+      class="modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="skillSelectorTitle">
+
+      <div class="modal-header">
+
+        <h2 id="skillSelectorTitle">
+          スキル選択
+        </h2>
+
+        <button
+          id="closeSkillSelectorButton"
+          class="close-button"
+          type="button"
+          aria-label="閉じる">
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- スキル検索 -->
+      <div class="search-area">
+
+        <label for="skillSearch">
+          スキル検索
+        </label>
+
+        <input
+          id="skillSearch"
+          type="search"
+          placeholder="スキル名を入力">
+
+      </div>
+
+
+      <!-- スキル一覧 -->
+      <div
+        id="skillSelectorList"
+        class="skill-selector-list">
+
+        <!-- JavaScriptで全スキルを生成 -->
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          id="confirmSkillSelectionButton"
+          class="primary-button"
+          type="button">
+          決定
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
+```

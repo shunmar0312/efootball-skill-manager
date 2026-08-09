@@ -1,0 +1,977 @@
+```css
+/*
+ * eFootball Skill Manager
+ * Copyright (c) 2026 numa. All Rights Reserved.
+ *
+ * Unauthorized copying, redistribution, or republication
+ * of this source code is not permitted.
+ */
+/* 
+=========================
+   Base
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #f4f5f7;
+  color: #222;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  background: #f4f5f7;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  padding:
+    calc(12px + env(safe-area-inset-top))
+    16px
+    12px;
+
+  background: #111827;
+  color: #fff;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.app-main {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+
+  padding:
+    16px
+    14px
+    calc(100px + env(safe-area-inset-bottom));
+}
+
+
+/* =========================
+   Screen
+========================= */
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.screen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.screen-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+.primary-button,
+.secondary-button,
+.back-button,
+.settings-button,
+.danger-button {
+  min-height: 44px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.primary-button {
+  border: none;
+  padding: 10px 16px;
+
+  background: #2563eb;
+  color: #fff;
+}
+
+.primary-button:active {
+  transform: scale(0.98);
+}
+
+.secondary-button {
+  width: 100%;
+
+  border: 1px solid #d1d5db;
+  padding: 11px 14px;
+
+  background: #fff;
+  color: #1f2937;
+}
+
+.back-button {
+  border: none;
+  padding: 8px 4px;
+
+  background: transparent;
+  color: #2563eb;
+}
+
+.large-button {
+  width: 100%;
+  min-height: 50px;
+  font-size: 16px;
+}
+
+.danger-button {
+  width: 100%;
+
+  border: 1px solid #dc2626;
+  padding: 11px 14px;
+
+  background: #fff;
+  color: #dc2626;
+}
+
+
+/* =========================
+   Inputs
+========================= */
+
+input[type="text"],
+input[type="search"],
+select {
+  width: 100%;
+  min-height: 46px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  padding: 10px 12px;
+
+  background: #fff;
+  color: #111827;
+
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+/* =========================
+   Search
+========================= */
+
+.search-area {
+  margin-bottom: 16px;
+}
+
+
+/* =========================
+   Player list
+========================= */
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.player-card {
+  width: 100%;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 15px;
+
+  background: #fff;
+
+  text-align: left;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.player-card:active {
+  transform: scale(0.99);
+}
+
+.player-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.player-card-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.player-card-position {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 48px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: #eef2ff;
+  color: #3730a3;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.player-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.special-player-label {
+  font-weight: 700;
+  color: #b45309;
+}
+
+
+/* =========================
+   Empty message
+========================= */
+
+.empty-message {
+  margin: 12px 0;
+  padding: 18px;
+
+  border-radius: 12px;
+
+  background: #f9fafb;
+  color: #6b7280;
+
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* =========================
+   Form
+========================= */
+
+#playerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section,
+.settings-section,
+.matching-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.form-section h3,
+.settings-section h3,
+.matching-section h3 {
+  margin: 0 0 14px;
+
+  font-size: 17px;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.section-title-row h3 {
+  margin: 0;
+}
+
+.section-title-row span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.section-description {
+  margin: -3px 0 14px;
+
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.form-actions {
+  padding-top: 4px;
+}
+
+
+/* =========================
+   Position selector
+========================= */
+
+.position-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.position-selector button {
+  min-height: 44px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  background: #fff;
+  color: #374151;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.position-selector button.selected {
+  border-color: #2563eb;
+
+  background: #2563eb;
+  color: #fff;
+}
+
+
+/* =========================
+   Selected skill list
+========================= */
+
+.selected-skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 12px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 11px 12px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #f9fafb;
+}
+
+.skill-row-name {
+  flex: 1;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.skill-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-status-button {
+  min-height: 34px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+
+  padding: 5px 10px;
+
+  background: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.skill-status-button.acquired {
+  border-color: #16a34a;
+
+  background: #dcfce7;
+  color: #166534;
+}
+
+.skill-remove-button {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #fee2e2;
+  color: #b91c1c;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* =========================
+   Recommended skills
+========================= */
+
+.recommended-skill-area {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.recommend-group {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.recommend-group:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.recommend-group-title {
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.recommend-skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.recommend-skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  min-height: 42px;
+
+  padding: 8px 10px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background: #f9fafb;
+}
+
+.recommend-skill-row.low-priority {
+  opacity: 0.65;
+}
+
+.recommend-add-button {
+  flex-shrink: 0;
+
+  min-height: 34px;
+
+  border: 1px solid #2563eb;
+  border-radius: 9px;
+
+  padding: 5px 10px;
+
+  background: #fff;
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.recommend-add-button.selected {
+  border-color: #16a34a;
+
+  background: #dcfce7;
+  color: #166534;
+}
+
+
+/* =========================
+   Toggle
+========================= */
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin: 0;
+
+  cursor: pointer;
+}
+
+.toggle-row input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+
+  accent-color: #2563eb;
+}
+
+
+/* =========================
+   Matching
+========================= */
+
+.matching-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 6px;
+
+  margin-bottom: 16px;
+
+  padding: 4px;
+
+  border-radius: 12px;
+
+  background: #e5e7eb;
+}
+
+.matching-tab {
+  min-height: 42px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+  color: #4b5563;
+
+  font-weight: 700;
+}
+
+.matching-tab.active {
+  background: #fff;
+  color: #111827;
+
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.matching-panel {
+  display: none;
+}
+
+.matching-panel.active {
+  display: block;
+}
+
+.matching-section {
+  margin-top: 16px;
+}
+
+.match-card {
+  margin-top: 10px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  padding: 14px;
+
+  background: #fff;
+}
+
+.match-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.match-card-name {
+  font-weight: 700;
+}
+
+.match-score {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.match-skill {
+  padding: 4px 0;
+
+  font-size: 14px;
+}
+
+.match-skill.hit {
+  color: #166534;
+}
+
+.match-skill.miss {
+  color: #9ca3af;
+}
+
+
+/* =========================
+   Settings
+========================= */
+
+.settings-section {
+  margin-bottom: 16px;
+}
+
+.settings-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 12px 14px;
+
+  background: #fff;
+  color: #111827;
+
+  text-align: left;
+}
+
+.file-button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   Recommendation settings
+========================= */
+
+#recommendationPositionSelect {
+  margin-bottom: 16px;
+}
+
+#recommendationSettingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* =========================
+   Bottom navigation
+========================= */
+
+.bottom-navigation {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: 30;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  padding:
+    7px
+    8px
+    calc(7px + env(safe-area-inset-bottom));
+
+  border-top: 1px solid #e5e7eb;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  min-height: 52px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #6b7280;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.nav-button.active {
+  color: #2563eb;
+}
+
+.nav-icon {
+  font-size: 19px;
+}
+
+
+/* =========================
+   Modal
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  display: none;
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  max-height: 88vh;
+
+  padding:
+    16px
+    16px
+    calc(16px + env(safe-area-inset-bottom));
+
+  border-radius: 22px 22px 0 0;
+
+  background: #fff;
+
+  overflow-y: auto;
+
+  animation: modal-slide-up 0.2s ease-out;
+}
+
+@keyframes modal-slide-up {
+
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.modal-header h2 {
+  margin: 0;
+
+  font-size: 20px;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+  color: #111827;
+
+  font-size: 24px;
+}
+
+.skill-selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-height: 50vh;
+
+  overflow-y: auto;
+}
+
+.skill-selector-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 44px;
+
+  padding: 9px 10px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.skill-selector-item input {
+  width: 20px;
+  height: 20px;
+
+  accent-color: #2563eb;
+}
+
+.modal-actions {
+  position: sticky;
+  bottom: 0;
+
+  padding-top: 14px;
+
+  background: #fff;
+}
+
+.modal-actions .primary-button {
+  width: 100%;
+}
+
+
+/* =========================
+   iPhone / small screens
+========================= */
+
+@media (max-width: 430px) {
+
+  .app-main {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .screen-header h2 {
+    font-size: 22px;
+  }
+
+  .position-selector {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .form-section,
+  .settings-section,
+  .matching-section {
+    padding: 14px;
+  }
+
+}
+
+
+/* =========================
+   Very small screens
+========================= */
+
+@media (max-width: 360px) {
+
+  .position-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .screen-header {
+    align-items: flex-start;
+  }
+
+}
+```
