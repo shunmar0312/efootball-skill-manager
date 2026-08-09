@@ -9,6 +9,7 @@
  * This project is not affiliated with or endorsed by KONAMI.
  */
 
+
 /* =========================================================
    eFootball Skill Manager
 ========================================================= */
@@ -16,8 +17,14 @@
 
 /* =========================================================
    スキルマスター
-   normal  = 通常スキル（追加可能）
-   special = 特殊スキル（所持スキルのみ）
+
+   normal
+   → 通常スキル
+   → 追加スキルとして選択可能
+
+   special
+   → 特殊スキル
+   → 所持スキルとしてのみ選択可能
 ========================================================= */
 
 const SKILLS = [
@@ -104,13 +111,7 @@ const SKILLS = [
 
   /* =========================================================
      特殊スキル
-     ※追加スキル候補には表示しない
   ========================================================= */
-
-
-  /* =========================
-     特殊：ドリブル
-  ========================= */
 
   { name: "モメンタムドリブル", category: "ドリブル", type: "special" },
   { name: "アクセルバースト", category: "ドリブル", type: "special" },
@@ -118,20 +119,10 @@ const SKILLS = [
   { name: "アタックサージ", category: "ドリブル", type: "special" },
   { name: "タップトリック", category: "ドリブル", type: "special" },
 
-
-  /* =========================
-     特殊：パス
-  ========================= */
-
   { name: "ゲームチェンジパス", category: "パス", type: "special" },
   { name: "エッジクロス", category: "パス", type: "special" },
   { name: "ビジョナリーパス", category: "パス", type: "special" },
   { name: "フェノミナルパス", category: "パス", type: "special" },
-
-
-  /* =========================
-     特殊：シュート
-  ========================= */
 
   { name: "フェノミナルフィニッシュ", category: "シュート", type: "special" },
   { name: "ブリッツカーブ", category: "シュート", type: "special" },
@@ -139,20 +130,10 @@ const SKILLS = [
   { name: "ロースクリーマー", category: "シュート", type: "special" },
   { name: "ウィルパワー", category: "シュート", type: "special" },
 
-
-  /* =========================
-     特殊：ディフェンス
-  ========================= */
-
   { name: "フォートレス", category: "ディフェンス", type: "special" },
   { name: "エアリアルフォート", category: "ディフェンス", type: "special" },
   { name: "ロングリーチタックル", category: "ディフェンス", type: "special" },
   { name: "シャドウハント", category: "ディフェンス", type: "special" },
-
-
-  /* =========================
-     特殊：GK
-  ========================= */
 
   {
     name: "GKディレクティングディフェンス",
@@ -166,18 +147,13 @@ const SKILLS = [
     type: "special"
   },
 
-
-  /* =========================
-     特殊：その他
-  ========================= */
-
   { name: "アタックトリガー", category: "その他", type: "special" }
 
 ];
 
 
 /* =========================================================
-   ポジション別おすすめスキル
+   ポジション別おすすめ
 ========================================================= */
 
 const RECOMMENDATIONS = {
@@ -253,7 +229,6 @@ const RECOMMENDATIONS = {
         "ダブルタッチ",
         "足裏コントロール"
       ],
-
       lowPriority: [
         "シザーズ",
         "シャペウ",
@@ -271,7 +246,6 @@ const RECOMMENDATIONS = {
         "コントロールカーブ",
         "アウトスピンキック"
       ],
-
       lowPriority: [
         "コントロールループ"
       ]
@@ -284,7 +258,6 @@ const RECOMMENDATIONS = {
         "ワンタッチパス",
         "ピンポイントクロス"
       ],
-
       lowPriority: [
         "ノールックパス",
         "ラボーナ"
@@ -317,7 +290,6 @@ const RECOMMENDATIONS = {
         "スルーパス",
         "ワンタッチパス"
       ],
-
       lowPriority: [
         "ノールックパス",
         "ヒールトリック",
@@ -351,7 +323,6 @@ const RECOMMENDATIONS = {
         "マンマーク",
         "インターセプト"
       ],
-
       lowPriority: [
         "アクロバティッククリア",
         "スライディングタックル"
@@ -387,7 +358,6 @@ const RECOMMENDATIONS = {
         "インターセプト",
         "スライディングタックル"
       ],
-
       lowPriority: [
         "アクロバティッククリア"
       ]
@@ -400,7 +370,6 @@ const RECOMMENDATIONS = {
         "ワンタッチパス",
         "ピンポイントクロス"
       ],
-
       lowPriority: [
         "アウトスピンキック",
         "低弾道ロブ"
@@ -417,7 +386,6 @@ const RECOMMENDATIONS = {
     {
       title: "空中戦系",
       skills: [],
-
       lowPriority: [
         "エアバトル",
         "ヘッダー"
@@ -450,7 +418,6 @@ const RECOMMENDATIONS = {
     {
       title: "空中戦系",
       skills: [],
-
       lowPriority: [
         "エアバトル",
         "ヘッダー"
@@ -460,7 +427,6 @@ const RECOMMENDATIONS = {
     {
       title: "パス系",
       skills: [],
-
       lowPriority: [
         "バックスピンロブ"
       ]
@@ -490,7 +456,6 @@ const RECOMMENDATIONS = {
     {
       title: "空中戦系",
       skills: [],
-
       lowPriority: [
         "ヘッダー",
         "エアバトル"
@@ -500,7 +465,6 @@ const RECOMMENDATIONS = {
     {
       title: "パス系",
       skills: [],
-
       lowPriority: [
         "ワンタッチパス",
         "スルーパス",
@@ -512,7 +476,6 @@ const RECOMMENDATIONS = {
     {
       title: "その他",
       skills: [],
-
       lowPriority: [
         "キャプテンシー"
       ]
@@ -520,13 +483,8 @@ const RECOMMENDATIONS = {
 
   ]
 
-
 };
 
-
-/* =========================================================
-   全ポジション共通おすすめ
-========================================================= */
 
 const COMMON_RECOMMENDATIONS = [
   "PKキッカー",
@@ -555,7 +513,6 @@ const backToPlayerListButton =
 const playerForm =
   document.getElementById("playerForm");
 
-
 const playerNameInput =
   document.getElementById("playerName");
 
@@ -564,7 +521,6 @@ const selectedPositionInput =
 
 const positionButtons =
   document.querySelectorAll("#positionSelector button");
-
 
 const playerList =
   document.getElementById("playerList");
@@ -612,7 +568,7 @@ const recommendPositionLabel =
   document.getElementById("recommendPositionLabel");
 
 
-/* モーダル */
+/* スキル選択モーダル */
 
 const skillSelectorModal =
   document.getElementById("skillSelectorModal");
@@ -632,8 +588,11 @@ const closeSkillSelectorButton =
 const confirmSkillSelectionButton =
   document.getElementById("confirmSkillSelectionButton");
 
+const modalOverlay =
+  skillSelectorModal.querySelector(".modal-overlay");
 
-/* マッチングタブ */
+
+/* マッチング */
 
 const targetPlayerMatchingTab =
   document.getElementById("targetPlayerMatchingTab");
@@ -646,6 +605,24 @@ const targetPlayerMatchingPanel =
 
 const materialPlayerMatchingPanel =
   document.getElementById("materialPlayerMatchingPanel");
+
+const matchingTargetPlayer =
+  document.getElementById("matchingTargetPlayer");
+
+const matchingMaterialPlayer =
+  document.getElementById("matchingMaterialPlayer");
+
+const targetWantedSkillList =
+  document.getElementById("targetWantedSkillList");
+
+const targetMatchingResult =
+  document.getElementById("targetMatchingResult");
+
+const materialOwnedSkillList =
+  document.getElementById("materialOwnedSkillList");
+
+const materialMatchingResult =
+  document.getElementById("materialMatchingResult");
 
 
 /* 設定 */
@@ -671,30 +648,11 @@ let players = [];
 
 let editingPlayerId = null;
 
-
-/*
-  編集中の一時データ
-  保存ボタンを押すまでplayersには反映しない
-*/
-
 let draftOwnedSkills = [];
 
 let draftAdditionalSkills = [];
 
-
-/*
-  skillSelectorMode
-
-  "owned"
-  "additional"
-*/
-
 let skillSelectorMode = null;
-
-
-/*
-  モーダル内で一時選択しているスキル
-*/
 
 let temporarySelectedSkills =
   new Set();
@@ -716,6 +674,8 @@ document.addEventListener(
 
     setupRecommendationSettings();
 
+    renderMatchingPlayerOptions();
+
   }
 );
 
@@ -727,9 +687,7 @@ document.addEventListener(
 function showScreen(screenId) {
 
   screens.forEach((screen) => {
-
     screen.classList.remove("active");
-
   });
 
 
@@ -738,13 +696,18 @@ function showScreen(screenId) {
 
 
   if (targetScreen) {
-
     targetScreen.classList.add("active");
-
   }
 
 
   updateBottomNavigation(screenId);
+
+
+  if (screenId === "matchingScreen") {
+    renderMatchingPlayerOptions();
+    renderTargetMatching();
+    renderMaterialMatching();
+  }
 
 
   window.scrollTo({
@@ -767,9 +730,7 @@ function updateBottomNavigation(screenId) {
 
 
     if (button.dataset.screen === screenId) {
-
       button.classList.add("active");
-
     }
 
   });
@@ -788,9 +749,7 @@ navButtons.forEach((button) => {
 
 
       if (!screenId) {
-
         return;
-
       }
 
 
@@ -803,7 +762,7 @@ navButtons.forEach((button) => {
 
 
 /* =========================================================
-   新規選手
+   選手追加
 ========================================================= */
 
 addPlayerButton.addEventListener(
@@ -857,19 +816,12 @@ positionButtons.forEach((button) => {
 
       positionButtons.forEach(
         (positionButton) => {
-
-          positionButton.classList.remove(
-            "selected"
-          );
-
+          positionButton.classList.remove("selected");
         }
       );
 
 
-      button.classList.add(
-        "selected"
-      );
-
+      button.classList.add("selected");
 
       selectedPositionInput.value =
         button.dataset.position;
@@ -968,6 +920,8 @@ playerForm.addEventListener(
 
     renderPlayerList();
 
+    renderMatchingPlayerOptions();
+
     resetPlayerForm();
 
     editingPlayerId = null;
@@ -981,7 +935,7 @@ playerForm.addEventListener(
 
 
 /* =========================================================
-   新規追加
+   新規選手追加
 ========================================================= */
 
 function addPlayer(
@@ -1007,9 +961,7 @@ function addPlayer(
       draftAdditionalSkills.map(
         (skill) => ({
           name: skill.name,
-          acquired: Boolean(
-            skill.acquired
-          )
+          acquired: Boolean(skill.acquired)
         })
       ),
 
@@ -1044,9 +996,7 @@ function updatePlayer(
 
 
   if (!player) {
-
     return;
-
   }
 
 
@@ -1063,9 +1013,7 @@ function updatePlayer(
     draftAdditionalSkills.map(
       (skill) => ({
         name: skill.name,
-        acquired: Boolean(
-          skill.acquired
-        )
+        acquired: Boolean(skill.acquired)
       })
     );
 
@@ -1076,7 +1024,7 @@ function updatePlayer(
 
 
 /* =========================================================
-   一覧
+   選手一覧
 ========================================================= */
 
 function renderPlayerList() {
@@ -1087,7 +1035,8 @@ function renderPlayerList() {
       .toLowerCase();
 
 
-  playerList.innerHTML = "";
+  playerList.innerHTML =
+    "";
 
 
   const filteredPlayers =
@@ -1195,18 +1144,23 @@ function createPlayerCard(player) {
 
 
   const additionalSkills =
-    Array.isArray(
-      player.additionalSkills
-    )
+    Array.isArray(player.additionalSkills)
       ? player.additionalSkills
       : [];
 
 
-  const acquiredCount =
+  const acquiredSkills =
     additionalSkills.filter(
       (skill) =>
         skill.acquired === true
-    ).length;
+    );
+
+
+  const unacquiredSkills =
+    additionalSkills.filter(
+      (skill) =>
+        skill.acquired !== true
+    );
 
 
   const additionalSkillStatus =
@@ -1215,7 +1169,7 @@ function createPlayerCard(player) {
 
   additionalSkillStatus.textContent =
     "追加スキル " +
-    acquiredCount +
+    acquiredSkills.length +
     " / " +
     additionalSkills.length;
 
@@ -1225,6 +1179,91 @@ function createPlayerCard(player) {
   );
 
 
+  /* =========================
+     未取得スキル表示
+  ========================= */
+
+  if (additionalSkills.length > 0) {
+
+    if (unacquiredSkills.length > 0) {
+
+      const pendingTitle =
+        document.createElement("div");
+
+      pendingTitle.style.marginTop =
+        "6px";
+
+      pendingTitle.style.fontWeight =
+        "700";
+
+      pendingTitle.style.fontSize =
+        "13px";
+
+      pendingTitle.style.color =
+        "#6b7280";
+
+      pendingTitle.textContent =
+        "未取得";
+
+
+      info.appendChild(
+        pendingTitle
+      );
+
+
+      unacquiredSkills.forEach(
+        (skill) => {
+
+          const skillText =
+            document.createElement("div");
+
+          skillText.style.fontSize =
+            "13px";
+
+          skillText.style.color =
+            "#374151";
+
+          skillText.textContent =
+            "・" + skill.name;
+
+
+          info.appendChild(
+            skillText
+          );
+
+        }
+      );
+
+    } else {
+
+      const completed =
+        document.createElement("div");
+
+      completed.style.marginTop =
+        "6px";
+
+      completed.style.fontSize =
+        "13px";
+
+      completed.style.fontWeight =
+        "700";
+
+      completed.style.color =
+        "#166534";
+
+      completed.textContent =
+        "✓ 追加スキル取得完了";
+
+
+      info.appendChild(
+        completed
+      );
+
+    }
+
+  }
+
+
   if (player.specialTraining) {
 
     const specialLabel =
@@ -1232,6 +1271,9 @@ function createPlayerCard(player) {
 
     specialLabel.className =
       "special-player-label";
+
+    specialLabel.style.marginTop =
+      "6px";
 
     specialLabel.textContent =
       "⭐ 特別強化用";
@@ -1279,9 +1321,7 @@ function openPlayerEdit(playerId) {
 
 
   if (!player) {
-
     return;
-
   }
 
 
@@ -1309,9 +1349,7 @@ function openPlayerEdit(playerId) {
     player.additionalSkills.map(
       (skill) => ({
         name: skill.name,
-        acquired: Boolean(
-          skill.acquired
-        )
+        acquired: Boolean(skill.acquired)
       })
     );
 
@@ -1372,11 +1410,7 @@ function resetPlayerForm() {
 
   positionButtons.forEach(
     (button) => {
-
-      button.classList.remove(
-        "selected"
-      );
-
+      button.classList.remove("selected");
     }
   );
 
@@ -1401,7 +1435,7 @@ function resetPlayerForm() {
 
 
 /* =========================================================
-   所持スキル・追加スキル表示
+   スキル表示
 ========================================================= */
 
 function renderSkillSections() {
@@ -1414,7 +1448,7 @@ function renderSkillSections() {
 
 
 /* =========================================================
-   所持スキル表示
+   所持スキル
 ========================================================= */
 
 function renderOwnedSkills() {
@@ -1428,9 +1462,7 @@ function renderOwnedSkills() {
     " / 10";
 
 
-  if (
-    draftOwnedSkills.length === 0
-  ) {
+  if (draftOwnedSkills.length === 0) {
 
     const message =
       document.createElement("p");
@@ -1440,6 +1472,7 @@ function renderOwnedSkills() {
 
     message.textContent =
       "所持スキルは選択されていません。";
+
 
     ownedSkillList.appendChild(
       message
@@ -1541,7 +1574,7 @@ function renderOwnedSkills() {
 
 
 /* =========================================================
-   追加スキル表示
+   追加スキル
 ========================================================= */
 
 function renderAdditionalSkills() {
@@ -1555,9 +1588,7 @@ function renderAdditionalSkills() {
     " / 5";
 
 
-  if (
-    draftAdditionalSkills.length === 0
-  ) {
+  if (draftAdditionalSkills.length === 0) {
 
     const message =
       document.createElement("p");
@@ -1567,6 +1598,7 @@ function renderAdditionalSkills() {
 
     message.textContent =
       "追加したいスキルは選択されていません。";
+
 
     additionalSkillList.appendChild(
       message
@@ -1603,10 +1635,6 @@ function renderAdditionalSkills() {
       actions.className =
         "skill-row-actions";
 
-
-      /* -------------------------
-         取得状態
-      ------------------------- */
 
       const statusButton =
         document.createElement("button");
@@ -1648,10 +1676,6 @@ function renderAdditionalSkills() {
         }
       );
 
-
-      /* -------------------------
-         削除
-      ------------------------- */
 
       const removeButton =
         document.createElement("button");
@@ -1710,40 +1734,24 @@ function renderAdditionalSkills() {
 
 
 /* =========================================================
-   所持スキル選択モーダル
+   スキル選択
 ========================================================= */
 
 openOwnedSkillSelectorButton.addEventListener(
   "click",
   () => {
-
-    openSkillSelector(
-      "owned"
-    );
-
+    openSkillSelector("owned");
   }
 );
 
-
-/* =========================================================
-   追加スキル選択モーダル
-========================================================= */
 
 openAdditionalSkillSelectorButton.addEventListener(
   "click",
   () => {
-
-    openSkillSelector(
-      "additional"
-    );
-
+    openSkillSelector("additional");
   }
 );
 
-
-/* =========================================================
-   スキルモーダルを開く
-========================================================= */
 
 function openSkillSelector(mode) {
 
@@ -1797,10 +1805,6 @@ function openSkillSelector(mode) {
 }
 
 
-/* =========================================================
-   モーダルを閉じる
-========================================================= */
-
 function closeSkillSelector() {
 
   skillSelectorModal.classList.remove(
@@ -1824,24 +1828,10 @@ function closeSkillSelector() {
 }
 
 
-/* =========================================================
-   モーダル ×
-========================================================= */
-
 closeSkillSelectorButton.addEventListener(
   "click",
   closeSkillSelector
 );
-
-
-/* =========================================================
-   背景クリック
-========================================================= */
-
-const modalOverlay =
-  skillSelectorModal.querySelector(
-    ".modal-overlay"
-  );
 
 
 modalOverlay.addEventListener(
@@ -1850,37 +1840,17 @@ modalOverlay.addEventListener(
 );
 
 
-/* =========================================================
-   スキル検索
-========================================================= */
-
 skillSearch.addEventListener(
   "input",
-  () => {
-
-    renderSkillSelectorList();
-
-  }
+  renderSkillSelectorList
 );
 
-
-/* =========================================================
-   スキル候補生成
-========================================================= */
 
 function getSelectableSkills() {
 
   if (
     skillSelectorMode === "owned"
   ) {
-
-    /*
-      所持スキル
-      → 通常＋特殊
-
-      ただし追加予定に登録済みの
-      スキルは二重登録防止のため除外
-    */
 
     const additionalNames =
       draftAdditionalSkills.map(
@@ -1899,12 +1869,6 @@ function getSelectableSkills() {
   }
 
 
-  /*
-    追加スキル
-    → 通常スキルのみ
-    → 所持スキルは除外
-  */
-
   return SKILLS.filter(
     (skill) => {
 
@@ -1921,10 +1885,6 @@ function getSelectableSkills() {
 }
 
 
-/* =========================================================
-   スキル候補表示
-========================================================= */
-
 function renderSkillSelectorList() {
 
   skillSelectorList.innerHTML =
@@ -1939,19 +1899,14 @@ function renderSkillSelectorList() {
 
   const selectableSkills =
     getSelectableSkills().filter(
-      (skill) => {
-
-        return skill.name
+      (skill) =>
+        skill.name
           .toLowerCase()
-          .includes(searchText);
-
-      }
+          .includes(searchText)
     );
 
 
-  if (
-    selectableSkills.length === 0
-  ) {
+  if (selectableSkills.length === 0) {
 
     const message =
       document.createElement("p");
@@ -1961,6 +1916,7 @@ function renderSkillSelectorList() {
 
     message.textContent =
       "該当するスキルがありません。";
+
 
     skillSelectorList.appendChild(
       message
@@ -1991,12 +1947,8 @@ function renderSkillSelectorList() {
         );
 
 
-      if (
-        categorySkills.length === 0
-      ) {
-
+      if (categorySkills.length === 0) {
         return;
-
       }
 
 
@@ -2019,18 +1971,14 @@ function renderSkillSelectorList() {
         (skill) => {
 
           const label =
-            document.createElement(
-              "label"
-            );
+            document.createElement("label");
 
           label.className =
             "skill-selector-item";
 
 
           const checkbox =
-            document.createElement(
-              "input"
-            );
+            document.createElement("input");
 
           checkbox.type =
             "checkbox";
@@ -2055,9 +2003,7 @@ function renderSkillSelectorList() {
 
 
           const text =
-            document.createElement(
-              "span"
-            );
+            document.createElement("span");
 
 
           if (
@@ -2097,10 +2043,6 @@ function renderSkillSelectorList() {
 
 }
 
-
-/* =========================================================
-   モーダル内選択
-========================================================= */
 
 function handleTemporarySkillSelection(
   skill,
@@ -2151,10 +2093,6 @@ function handleTemporarySkillSelection(
 }
 
 
-/* =========================================================
-   スキル選択決定
-========================================================= */
-
 confirmSkillSelectionButton.addEventListener(
   "click",
   () => {
@@ -2166,12 +2104,7 @@ confirmSkillSelectionButton.addEventListener(
       draftOwnedSkills =
         [...temporarySelectedSkills];
 
-
     } else {
-
-      /*
-        既存スキルの取得状態を維持
-      */
 
       const oldStatusMap =
         new Map(
@@ -2188,7 +2121,7 @@ confirmSkillSelectionButton.addEventListener(
         [...temporarySelectedSkills].map(
           (name) => ({
 
-            name: name,
+            name,
 
             acquired:
               oldStatusMap.get(name) ||
@@ -2211,7 +2144,7 @@ confirmSkillSelectionButton.addEventListener(
 
 
 /* =========================================================
-   ポジション→おすすめ分類
+   おすすめ
 ========================================================= */
 
 function getRecommendationType(
@@ -2222,9 +2155,7 @@ function getRecommendationType(
     position === "CF" ||
     position === "ST"
   ) {
-
     return "CF";
-
   }
 
 
@@ -2232,9 +2163,7 @@ function getRecommendationType(
     position === "LWG" ||
     position === "RWG"
   ) {
-
     return "WG";
-
   }
 
 
@@ -2245,9 +2174,7 @@ function getRecommendationType(
     position === "CMF" ||
     position === "DMF"
   ) {
-
     return "MF";
-
   }
 
 
@@ -2255,27 +2182,17 @@ function getRecommendationType(
     position === "LSB" ||
     position === "RSB"
   ) {
-
     return "SB";
-
   }
 
 
-  if (
-    position === "CB"
-  ) {
-
+  if (position === "CB") {
     return "CB";
-
   }
 
 
-  if (
-    position === "GK"
-  ) {
-
+  if (position === "GK") {
     return "GK";
-
   }
 
 
@@ -2283,10 +2200,6 @@ function getRecommendationType(
 
 }
 
-
-/* =========================================================
-   おすすめ表示
-========================================================= */
 
 function renderRecommendations() {
 
@@ -2376,10 +2289,6 @@ function renderRecommendations() {
 }
 
 
-/* =========================================================
-   おすすめグループ
-========================================================= */
-
 function createRecommendationGroup(
   title,
   skills,
@@ -2395,12 +2304,8 @@ function createRecommendationGroup(
     );
 
 
-  if (
-    availableSkills.length === 0
-  ) {
-
+  if (availableSkills.length === 0) {
     return;
-
   }
 
 
@@ -2439,11 +2344,9 @@ function createRecommendationGroup(
 
 
       if (lowPriority) {
-
         row.classList.add(
           "low-priority"
         );
-
       }
 
 
@@ -2522,10 +2425,6 @@ function createRecommendationGroup(
 }
 
 
-/* =========================================================
-   おすすめから追加
-========================================================= */
-
 function toggleRecommendedSkill(
   skillName
 ) {
@@ -2558,10 +2457,6 @@ function toggleRecommendedSkill(
 
     }
 
-
-    /*
-      念のため通常スキルかチェック
-    */
 
     const skillData =
       SKILLS.find(
@@ -2605,34 +2500,20 @@ function toggleRecommendedSkill(
 
 
 /* =========================================================
-   選手検索
+   検索
 ========================================================= */
 
 playerSearch.addEventListener(
   "input",
-  () => {
-
-    renderPlayerList();
-
-  }
+  renderPlayerList
 );
 
 
 /* =========================================================
-   マッチング画面タブ
+   マッチングタブ
 ========================================================= */
 
 function setupMatchingTabs() {
-
-  if (
-    !targetPlayerMatchingTab ||
-    !materialPlayerMatchingTab
-  ) {
-
-    return;
-
-  }
-
 
   targetPlayerMatchingTab.addEventListener(
     "click",
@@ -2653,6 +2534,9 @@ function setupMatchingTabs() {
       materialPlayerMatchingPanel.classList.remove(
         "active"
       );
+
+
+      renderTargetMatching();
 
     }
   );
@@ -2678,8 +2562,877 @@ function setupMatchingTabs() {
         "active"
       );
 
+
+      renderMaterialMatching();
+
     }
   );
+
+}
+
+
+/* =========================================================
+   マッチング用選手一覧
+========================================================= */
+
+function renderMatchingPlayerOptions() {
+
+  const currentTargetValue =
+    matchingTargetPlayer.value;
+
+  const currentMaterialValue =
+    matchingMaterialPlayer.value;
+
+
+  matchingTargetPlayer.innerHTML =
+    '<option value="">選手を選択</option>';
+
+
+  matchingMaterialPlayer.innerHTML =
+    '<option value="">選手を選択</option>';
+
+
+  players
+    .slice()
+    .sort(
+      (a, b) =>
+        a.name.localeCompare(
+          b.name,
+          "ja"
+        )
+    )
+    .forEach(
+      (player) => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          player.id;
+
+        option.textContent =
+          player.name +
+          " (" +
+          player.position +
+          ")";
+
+
+        matchingTargetPlayer.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+  players
+    .filter(
+      (player) =>
+        player.specialTraining
+    )
+    .slice()
+    .sort(
+      (a, b) =>
+        a.name.localeCompare(
+          b.name,
+          "ja"
+        )
+    )
+    .forEach(
+      (player) => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          player.id;
+
+        option.textContent =
+          player.name +
+          " (" +
+          player.position +
+          ")";
+
+
+        matchingMaterialPlayer.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+  if (
+    players.some(
+      (player) =>
+        player.id === currentTargetValue
+    )
+  ) {
+
+    matchingTargetPlayer.value =
+      currentTargetValue;
+
+  }
+
+
+  if (
+    players.some(
+      (player) =>
+        player.id === currentMaterialValue &&
+        player.specialTraining
+    )
+  ) {
+
+    matchingMaterialPlayer.value =
+      currentMaterialValue;
+
+  }
+
+}
+
+
+/* =========================================================
+   選手が現在持っているスキル
+
+   所持スキル
+   ＋
+   取得済み追加スキル
+========================================================= */
+
+function getCurrentSkills(player) {
+
+  const owned =
+    Array.isArray(
+      player.ownedSkills
+    )
+      ? player.ownedSkills
+      : [];
+
+
+  const acquiredAdditional =
+    Array.isArray(
+      player.additionalSkills
+    )
+      ? player.additionalSkills
+          .filter(
+            (skill) =>
+              skill.acquired === true
+          )
+          .map(
+            (skill) =>
+              skill.name
+          )
+      : [];
+
+
+  return [
+    ...new Set([
+      ...owned,
+      ...acquiredAdditional
+    ])
+  ];
+
+}
+
+
+/* =========================================================
+   選手が欲しい未取得スキル
+========================================================= */
+
+function getWantedSkills(player) {
+
+  if (
+    !Array.isArray(
+      player.additionalSkills
+    )
+  ) {
+    return [];
+  }
+
+
+  return player.additionalSkills
+    .filter(
+      (skill) =>
+        skill.acquired !== true
+    )
+    .map(
+      (skill) =>
+        skill.name
+    );
+
+}
+
+
+/* =========================================================
+   強化したい選手から探す
+========================================================= */
+
+matchingTargetPlayer.addEventListener(
+  "change",
+  renderTargetMatching
+);
+
+
+function renderTargetMatching() {
+
+  targetWantedSkillList.innerHTML =
+    "";
+
+  targetMatchingResult.innerHTML =
+    "";
+
+
+  const targetId =
+    matchingTargetPlayer.value;
+
+
+  if (!targetId) {
+
+    targetWantedSkillList.innerHTML =
+      '<p class="empty-message">選手を選択してください。</p>';
+
+    targetMatchingResult.innerHTML =
+      '<p class="empty-message">マッチング結果はありません。</p>';
+
+    return;
+
+  }
+
+
+  const targetPlayer =
+    players.find(
+      (player) =>
+        player.id === targetId
+    );
+
+
+  if (!targetPlayer) {
+    return;
+  }
+
+
+  const wantedSkills =
+    getWantedSkills(
+      targetPlayer
+    );
+
+
+  /* =========================
+     欲しいスキル
+  ========================= */
+
+  if (wantedSkills.length === 0) {
+
+    targetWantedSkillList.innerHTML =
+      '<p class="empty-message">未取得の追加スキルはありません。</p>';
+
+  } else {
+
+    wantedSkills.forEach(
+      (skillName) => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "skill-row";
+
+        row.textContent =
+          "・" + skillName;
+
+
+        targetWantedSkillList.appendChild(
+          row
+        );
+
+      }
+    );
+
+  }
+
+
+  if (wantedSkills.length === 0) {
+
+    targetMatchingResult.innerHTML =
+      '<p class="empty-message">この選手は追加スキルをすべて取得済みです。</p>';
+
+    return;
+
+  }
+
+
+  /* =========================
+     特別強化用選手との比較
+  ========================= */
+
+  const materials =
+    players.filter(
+      (player) =>
+        player.specialTraining &&
+        player.id !== targetPlayer.id
+    );
+
+
+  if (materials.length === 0) {
+
+    targetMatchingResult.innerHTML =
+      '<p class="empty-message">特別強化用選手が登録されていません。</p>';
+
+    return;
+
+  }
+
+
+  const results =
+    materials.map(
+      (material) => {
+
+        const currentSkills =
+          getCurrentSkills(
+            material
+          );
+
+
+        const matchedSkills =
+          wantedSkills.filter(
+            (skill) =>
+              currentSkills.includes(
+                skill
+              )
+          );
+
+
+        const missingSkills =
+          wantedSkills.filter(
+            (skill) =>
+              !currentSkills.includes(
+                skill
+              )
+          );
+
+
+        return {
+
+          player:
+            material,
+
+          matchedSkills,
+
+          missingSkills,
+
+          score:
+            matchedSkills.length
+
+        };
+
+      }
+    );
+
+
+  results.sort(
+    (a, b) => {
+
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+
+      return a.player.name.localeCompare(
+        b.player.name,
+        "ja"
+      );
+
+    }
+  );
+
+
+  results.forEach(
+    (result, index) => {
+
+      const card =
+        createTargetMatchCard(
+          result,
+          wantedSkills.length,
+          index
+        );
+
+
+      targetMatchingResult.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   強化対象側マッチカード
+========================================================= */
+
+function createTargetMatchCard(
+  result,
+  totalWanted,
+  index
+) {
+
+  const card =
+    document.createElement("div");
+
+  card.className =
+    "match-card";
+
+
+  const header =
+    document.createElement("div");
+
+  header.className =
+    "match-card-header";
+
+
+  const name =
+    document.createElement("div");
+
+  name.className =
+    "match-card-name";
+
+
+  const rankText =
+    index === 0
+      ? "🥇 "
+      : index === 1
+        ? "🥈 "
+        : index === 2
+          ? "🥉 "
+          : (index + 1) + ". ";
+
+
+  name.textContent =
+    rankText +
+    result.player.name;
+
+
+  const score =
+    document.createElement("div");
+
+  score.className =
+    "match-score";
+
+  score.textContent =
+    result.score +
+    " / " +
+    totalWanted;
+
+
+  header.appendChild(name);
+
+  header.appendChild(score);
+
+
+  card.appendChild(header);
+
+
+  if (
+    result.matchedSkills.length > 0
+  ) {
+
+    const title =
+      document.createElement("div");
+
+    title.style.fontWeight =
+      "700";
+
+    title.style.fontSize =
+      "13px";
+
+    title.style.marginBottom =
+      "4px";
+
+    title.textContent =
+      "一致";
+
+
+    card.appendChild(title);
+
+
+    result.matchedSkills.forEach(
+      (skill) => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "match-skill hit";
+
+        row.textContent =
+          "✓ " + skill;
+
+
+        card.appendChild(row);
+
+      }
+    );
+
+  }
+
+
+  if (
+    result.missingSkills.length > 0
+  ) {
+
+    const title =
+      document.createElement("div");
+
+    title.style.fontWeight =
+      "700";
+
+    title.style.fontSize =
+      "13px";
+
+    title.style.marginTop =
+      "8px";
+
+    title.style.marginBottom =
+      "4px";
+
+    title.textContent =
+      "不足";
+
+
+    card.appendChild(title);
+
+
+    result.missingSkills.forEach(
+      (skill) => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "match-skill miss";
+
+        row.textContent =
+          "× " + skill;
+
+
+        card.appendChild(row);
+
+      }
+    );
+
+  }
+
+
+  return card;
+
+}
+
+
+/* =========================================================
+   素材から探す
+========================================================= */
+
+matchingMaterialPlayer.addEventListener(
+  "change",
+  renderMaterialMatching
+);
+
+
+function renderMaterialMatching() {
+
+  materialOwnedSkillList.innerHTML =
+    "";
+
+  materialMatchingResult.innerHTML =
+    "";
+
+
+  const materialId =
+    matchingMaterialPlayer.value;
+
+
+  if (!materialId) {
+
+    materialOwnedSkillList.innerHTML =
+      '<p class="empty-message">選手を選択してください。</p>';
+
+    materialMatchingResult.innerHTML =
+      '<p class="empty-message">マッチング結果はありません。</p>';
+
+    return;
+
+  }
+
+
+  const materialPlayer =
+    players.find(
+      (player) =>
+        player.id === materialId &&
+        player.specialTraining
+    );
+
+
+  if (!materialPlayer) {
+    return;
+  }
+
+
+  const materialSkills =
+    getCurrentSkills(
+      materialPlayer
+    );
+
+
+  /* =========================
+     素材が持っているスキル
+  ========================= */
+
+  if (materialSkills.length === 0) {
+
+    materialOwnedSkillList.innerHTML =
+      '<p class="empty-message">この選手には登録済みスキルがありません。</p>';
+
+  } else {
+
+    materialSkills.forEach(
+      (skillName) => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "skill-row";
+
+        row.textContent =
+          "・" + skillName;
+
+
+        materialOwnedSkillList.appendChild(
+          row
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     他選手との比較
+  ========================= */
+
+  const targets =
+    players.filter(
+      (player) =>
+        player.id !== materialPlayer.id
+    );
+
+
+  if (targets.length === 0) {
+
+    materialMatchingResult.innerHTML =
+      '<p class="empty-message">比較対象の選手がいません。</p>';
+
+    return;
+
+  }
+
+
+  const results =
+    targets.map(
+      (target) => {
+
+        const wantedSkills =
+          getWantedSkills(
+            target
+          );
+
+
+        const matchedSkills =
+          wantedSkills.filter(
+            (skill) =>
+              materialSkills.includes(
+                skill
+              )
+          );
+
+
+        return {
+
+          player:
+            target,
+
+          wantedSkills,
+
+          matchedSkills,
+
+          score:
+            matchedSkills.length
+
+        };
+
+      }
+    )
+    .filter(
+      (result) =>
+        result.wantedSkills.length > 0
+    );
+
+
+  if (results.length === 0) {
+
+    materialMatchingResult.innerHTML =
+      '<p class="empty-message">未取得の追加スキルを持つ選手がいません。</p>';
+
+    return;
+
+  }
+
+
+  results.sort(
+    (a, b) => {
+
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+
+      return a.player.name.localeCompare(
+        b.player.name,
+        "ja"
+      );
+
+    }
+  );
+
+
+  results.forEach(
+    (result, index) => {
+
+      const card =
+        createMaterialMatchCard(
+          result,
+          index
+        );
+
+
+      materialMatchingResult.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   素材側マッチカード
+========================================================= */
+
+function createMaterialMatchCard(
+  result,
+  index
+) {
+
+  const card =
+    document.createElement("div");
+
+  card.className =
+    "match-card";
+
+
+  const header =
+    document.createElement("div");
+
+  header.className =
+    "match-card-header";
+
+
+  const name =
+    document.createElement("div");
+
+  name.className =
+    "match-card-name";
+
+
+  const rankText =
+    index === 0
+      ? "🥇 "
+      : index === 1
+        ? "🥈 "
+        : index === 2
+          ? "🥉 "
+          : (index + 1) + ". ";
+
+
+  name.textContent =
+    rankText +
+    result.player.name;
+
+
+  const score =
+    document.createElement("div");
+
+  score.className =
+    "match-score";
+
+  score.textContent =
+    result.score +
+    "一致";
+
+
+  header.appendChild(name);
+
+  header.appendChild(score);
+
+
+  card.appendChild(header);
+
+
+  if (
+    result.matchedSkills.length === 0
+  ) {
+
+    const none =
+      document.createElement("div");
+
+    none.className =
+      "match-skill miss";
+
+    none.textContent =
+      "一致スキルなし";
+
+
+    card.appendChild(none);
+
+
+    return card;
+
+  }
+
+
+  result.matchedSkills.forEach(
+    (skill) => {
+
+      const row =
+        document.createElement("div");
+
+      row.className =
+        "match-skill hit";
+
+      row.textContent =
+        "✓ " + skill;
+
+
+      card.appendChild(row);
+
+    }
+  );
+
+
+  return card;
 
 }
 
@@ -2710,7 +3463,9 @@ function setupRecommendationSettings() {
   }
 
 
-  if (backToSettingsButton) {
+  if (
+    backToSettingsButton
+  ) {
 
     backToSettingsButton.addEventListener(
       "click",
@@ -2732,11 +3487,7 @@ function setupRecommendationSettings() {
 
     recommendationPositionSelect.addEventListener(
       "change",
-      () => {
-
-        renderRecommendationSettings();
-
-      }
+      renderRecommendationSettings
     );
 
   }
@@ -2744,19 +3495,13 @@ function setupRecommendationSettings() {
 }
 
 
-/* =========================================================
-   設定画面おすすめ一覧
-========================================================= */
-
 function renderRecommendationSettings() {
 
   if (
     !recommendationSettingsList ||
     !recommendationPositionSelect
   ) {
-
     return;
-
   }
 
 
@@ -2824,10 +3569,8 @@ function renderRecommendationSettings() {
 
 
           if (skill.low) {
-
             row.style.opacity =
               "0.65";
-
           }
 
 
@@ -2938,30 +3681,26 @@ function loadPlayers() {
       parsed.map(
         (player) => {
 
-          /*
-            旧データにも対応
-          */
-
           const owned =
             Array.isArray(
               player.ownedSkills
             )
               ? player.ownedSkills
-                  .map((skill) => {
+                  .map(
+                    (skill) => {
 
-                    if (
-                      typeof skill ===
-                      "string"
-                    ) {
+                      if (
+                        typeof skill ===
+                        "string"
+                      ) {
+                        return skill;
+                      }
 
-                      return skill;
+
+                      return skill.name;
 
                     }
-
-
-                    return skill.name;
-
-                  })
+                  )
                   .filter(Boolean)
               : [];
 
@@ -2971,39 +3710,36 @@ function loadPlayers() {
               player.additionalSkills
             )
               ? player.additionalSkills
-                  .map((skill) => {
+                  .map(
+                    (skill) => {
 
-                    if (
-                      typeof skill ===
-                      "string"
-                    ) {
+                      if (
+                        typeof skill ===
+                        "string"
+                      ) {
+
+                        return {
+                          name: skill,
+                          acquired: false
+                        };
+
+                      }
+
 
                       return {
 
                         name:
-                          skill,
+                          skill.name,
 
                         acquired:
-                          false
+                          Boolean(
+                            skill.acquired
+                          )
 
                       };
 
                     }
-
-
-                    return {
-
-                      name:
-                        skill.name,
-
-                      acquired:
-                        Boolean(
-                          skill.acquired
-                        )
-
-                    };
-
-                  })
+                  )
                   .filter(
                     (skill) =>
                       Boolean(
