@@ -774,6 +774,7 @@ const DEFAULT_RECOMMENDATION_SETTINGS = {
       "バックスピンロブ",
       "アウトスピンキック",
       "低弾道ロブ",
+      "ヘッダー",
 
       "闘争心"
     ]
@@ -787,6 +788,7 @@ const DEFAULT_RECOMMENDATION_SETTINGS = {
       "ワンタッチパス",
       "スルーパス",
 
+      "ヘッダー",
       "マンマーク",
       "インターセプト",
       "ブロッカー",
