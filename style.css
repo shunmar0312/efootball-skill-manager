@@ -1484,3 +1484,148 @@ textarea {
   }
 
 }
+
+/* =========================================================
+   スマホ 横幅調整
+========================================================= */
+
+/* padding / border を横幅に含める */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* アプリ全体 */
+html,
+body,
+.app {
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: hidden;
+}
+
+
+/* メイン領域 */
+.app-main {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+}
+
+
+/* 各画面 */
+.screen {
+  width: 100%;
+  max-width: 100%;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   スマホ
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =========================
+     メインコンテンツ
+  ========================= */
+
+  .app-main {
+    width: 100%;
+    max-width: 100%;
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  /* =========================
+     各画面
+  ========================= */
+
+  .screen {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* =========================
+     画面タイトル部分
+  ========================= */
+
+  .screen-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .screen-header h2 {
+    min-width: 0;
+
+    margin: 0;
+
+    font-size: 26px;
+  }
+
+
+  /* =========================
+     選手追加ボタン
+  ========================= */
+
+  #addPlayerButton {
+    flex: 0 0 auto;
+
+    max-width: 48%;
+
+    padding: 12px 16px;
+
+    font-size: 15px;
+
+    white-space: nowrap;
+  }
+
+
+  /* =========================
+     戻るボタン
+  ========================= */
+
+  .back-button {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+  }
+
+
+  /* =========================
+     フォーム
+  ========================= */
+
+  #playerForm,
+  .form-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  #playerForm input,
+  #playerForm select,
+  #playerForm textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
