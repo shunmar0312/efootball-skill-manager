@@ -1636,19 +1636,30 @@ body,
 
 @media (max-width: 768px) {
 
-  .special-training-label {
+  .toggle-row {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 
     width: 100%;
     max-width: 100%;
 
     gap: 12px;
 
-    white-space: nowrap;
+    white-space: normal;
   }
 
-  .special-training-label input[type="checkbox"] {
+  .toggle-row>span {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  .toggle-row input[type="checkbox"] {
     flex: 0 0 auto;
 
     width: 24px;
