@@ -1407,11 +1407,11 @@ label {
 
   padding: 10px 16px;
 
-  border: 1px solid #111827;
+  border: 1px solid #dc2626;
   border-radius: 10px;
 
-  background: #ffffff;
-  color: #111827;
+  background: #dc2626;
+  color: #ffffff;
 
   font-size: 14px;
   font-weight: 700;
@@ -1422,7 +1422,8 @@ label {
 
 /* タップ時 */
 .player-edit-actions .danger-button:active {
-  background: #f3f4f6;
+  background: #b91c1c;
+  border-color: #b91c1c;
 }
 
 
