@@ -871,6 +871,12 @@ const addPlayerButton =
 const backToPlayerListButton =
   document.getElementById("backToPlayerListButton");
 
+const savePlayerButton =
+  document.getElementById("savePlayerButton");
+
+const deletePlayerButton =
+  document.getElementById("deletePlayerButton");
+
 const playerForm =
   document.getElementById("playerForm");
 
@@ -1163,6 +1169,12 @@ addPlayerButton.addEventListener(
 
     playerEditTitle.textContent =
       "選手追加";
+
+    savePlayerButton.textContent =
+      "登録";
+
+    deletePlayerButton.hidden =
+      true;
 
     showScreen(
       "playerEditScreen"
@@ -1677,7 +1689,6 @@ function createPlayerCard(player) {
 
   card.appendChild(info);
 
-
   card.addEventListener(
     "click",
     () => {
@@ -1719,6 +1730,12 @@ function openPlayerEdit(playerId) {
 
   playerEditTitle.textContent =
     "選手編集";
+
+  savePlayerButton.textContent =
+    "保存";
+
+  deletePlayerButton.hidden =
+    false;
 
 
   playerNameInput.value =
@@ -1782,6 +1799,76 @@ function openPlayerEdit(playerId) {
 
 }
 
+/* =========================================================
+   選手削除
+========================================================= */
+
+deletePlayerButton.addEventListener(
+  "click",
+  () => {
+
+    if (
+      editingPlayerId === null
+    ) {
+      return;
+    }
+
+
+    const player =
+      players.find(
+        (player) =>
+          player.id === editingPlayerId
+      );
+
+
+    if (!player) {
+      return;
+    }
+
+
+    const confirmed =
+      confirm(
+        player.name +
+        " を削除しますか？\n\nこの操作は元に戻せません。"
+      );
+
+
+    if (!confirmed) {
+      return;
+    }
+
+
+    players =
+      players.filter(
+        (player) =>
+          player.id !== editingPlayerId
+      );
+
+
+    savePlayers();
+
+    renderPlayerList();
+
+    renderMatchingPlayerOptions();
+
+
+    editingPlayerId =
+      null;
+
+
+    resetPlayerForm();
+
+
+    deletePlayerButton.hidden =
+      true;
+
+
+    showScreen(
+      "playerListScreen"
+    );
+
+  }
+);
 
 /* =========================================================
    フォーム初期化

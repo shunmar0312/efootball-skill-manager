@@ -43,10 +43,7 @@
         <div class="screen-header">
           <h2>選手</h2>
 
-          <button
-            id="addPlayerButton"
-            class="primary-button"
-            type="button">
+          <button id="addPlayerButton" class="primary-button" type="button">
             ＋ 選手追加
           </button>
         </div>
@@ -56,10 +53,7 @@
         <div class="search-area">
           <label for="playerSearch">選手検索</label>
 
-          <input
-            id="playerSearch"
-            type="search"
-            placeholder="選手名を入力">
+          <input id="playerSearch" type="search" placeholder="選手名を入力">
         </div>
 
 
@@ -104,10 +98,7 @@
 
         <div class="screen-header">
 
-          <button
-            id="backToPlayerListButton"
-            class="back-button"
-            type="button">
+          <button id="backToPlayerListButton" class="back-button" type="button">
             ＜ 戻る
           </button>
 
@@ -130,13 +121,7 @@
               選手名
             </label>
 
-            <input
-              id="playerName"
-              name="playerName"
-              type="text"
-              maxlength="50"
-              placeholder="選手名を入力"
-              required>
+            <input id="playerName" name="playerName" type="text" maxlength="50" placeholder="選手名を入力" required>
 
           </section>
 
@@ -147,9 +132,7 @@
 
             <h3>登録ポジション</h3>
 
-            <div
-              id="positionSelector"
-              class="position-selector">
+            <div id="positionSelector" class="position-selector">
 
               <button type="button" data-position="CF">CF</button>
               <button type="button" data-position="ST">ST</button>
@@ -173,10 +156,7 @@
 
             </div>
 
-            <input
-              id="selectedPosition"
-              name="selectedPosition"
-              type="hidden">
+            <input id="selectedPosition" name="selectedPosition" type="hidden">
 
           </section>
 
@@ -201,9 +181,7 @@
             </p>
 
 
-            <div
-              id="ownedSkillList"
-              class="selected-skill-list">
+            <div id="ownedSkillList" class="selected-skill-list">
 
               <p class="empty-message">
                 所持スキルは選択されていません。
@@ -212,10 +190,7 @@
             </div>
 
 
-            <button
-              id="openOwnedSkillSelectorButton"
-              class="secondary-button"
-              type="button">
+            <button id="openOwnedSkillSelectorButton" class="secondary-button" type="button">
               ＋ 所持スキルを選択
             </button>
 
@@ -242,9 +217,7 @@
             </p>
 
 
-            <div
-              id="additionalSkillList"
-              class="selected-skill-list">
+            <div id="additionalSkillList" class="selected-skill-list">
 
               <p class="empty-message">
                 追加したいスキルは選択されていません。
@@ -253,10 +226,7 @@
             </div>
 
 
-            <button
-              id="openAdditionalSkillSelectorButton"
-              class="secondary-button"
-              type="button">
+            <button id="openAdditionalSkillSelectorButton" class="secondary-button" type="button">
               ＋ 追加スキルを選択
             </button>
 
@@ -283,9 +253,7 @@
             </p>
 
 
-            <div
-              id="recommendedSkillArea"
-              class="recommended-skill-area">
+            <div id="recommendedSkillArea" class="recommended-skill-area">
 
               <p class="empty-message">
                 ポジションを選択してください。
@@ -302,18 +270,13 @@
 
             <h3>特別強化</h3>
 
-            <label
-              class="toggle-row"
-              for="specialTrainingPlayer">
+            <label class="toggle-row" for="specialTrainingPlayer">
 
               <span>
                 特別強化用選手として登録
               </span>
 
-              <input
-                id="specialTrainingPlayer"
-                name="specialTrainingPlayer"
-                type="checkbox">
+              <input id="specialTrainingPlayer" name="specialTrainingPlayer" type="checkbox">
 
             </label>
 
@@ -321,14 +284,15 @@
 
 
 
-          <!-- 保存 -->
-          <div class="form-actions">
+          <!-- 登録・保存 / 削除 -->
+          <div class="form-actions player-edit-actions">
 
-            <button
-              id="savePlayerButton"
-              class="primary-button large-button"
-              type="submit">
-              保存
+            <button id="savePlayerButton" class="primary-button large-button" type="submit">
+              登録
+            </button>
+
+            <button id="deletePlayerButton" class="danger-button large-button" type="button" hidden>
+              削除
             </button>
 
           </div>
@@ -352,17 +316,11 @@
         <!-- マッチングモード -->
         <div class="matching-mode-tabs">
 
-          <button
-            id="targetPlayerMatchingTab"
-            class="matching-tab active"
-            type="button">
+          <button id="targetPlayerMatchingTab" class="matching-tab active" type="button">
             強化したい選手
           </button>
 
-          <button
-            id="materialPlayerMatchingTab"
-            class="matching-tab"
-            type="button">
+          <button id="materialPlayerMatchingTab" class="matching-tab" type="button">
             素材から探す
           </button>
 
@@ -371,9 +329,7 @@
 
 
         <!-- 強化したい選手から探す -->
-        <div
-          id="targetPlayerMatchingPanel"
-          class="matching-panel active">
+        <div id="targetPlayerMatchingPanel" class="matching-panel active">
 
           <label for="matchingTargetPlayer">
             強化したい選手
@@ -420,9 +376,7 @@
 
 
         <!-- 素材から探す -->
-        <div
-          id="materialPlayerMatchingPanel"
-          class="matching-panel">
+        <div id="materialPlayerMatchingPanel" class="matching-panel">
 
           <label for="matchingMaterialPlayer">
             特別強化用選手
@@ -485,10 +439,7 @@
 
           <h3>おすすめスキル</h3>
 
-          <button
-            id="openRecommendationSettingsButton"
-            class="settings-button"
-            type="button">
+          <button id="openRecommendationSettingsButton" class="settings-button" type="button">
 
             ポジション別おすすめスキルを見る
             <span>＞</span>
@@ -503,33 +454,21 @@
 
           <h3>データ管理</h3>
 
-          <button
-            id="exportDataButton"
-            class="settings-button"
-            type="button">
+          <button id="exportDataButton" class="settings-button" type="button">
             データを書き出す
           </button>
 
 
-          <label
-            class="settings-button file-button"
-            for="importDataInput">
+          <label class="settings-button file-button" for="importDataInput">
 
             データを読み込む
 
           </label>
 
-          <input
-            id="importDataInput"
-            type="file"
-            accept=".json,application/json"
-            hidden>
+          <input id="importDataInput" type="file" accept=".json,application/json" hidden>
 
 
-          <button
-            id="resetDataButton"
-            class="danger-button"
-            type="button">
+          <button id="resetDataButton" class="danger-button" type="button">
             全データを初期化
           </button>
 
@@ -546,10 +485,7 @@
 
         <div class="screen-header">
 
-          <button
-            id="backToSettingsButton"
-            class="back-button"
-            type="button">
+          <button id="backToSettingsButton" class="back-button" type="button">
             ＜ 戻る
           </button>
 
@@ -593,11 +529,7 @@
     ========================== -->
     <nav class="bottom-navigation">
 
-      <button
-        id="playerNavButton"
-        class="nav-button active"
-        type="button"
-        data-screen="playerListScreen">
+      <button id="playerNavButton" class="nav-button active" type="button" data-screen="playerListScreen">
 
         <span class="nav-icon">👤</span>
         <span>選手</span>
@@ -605,11 +537,7 @@
       </button>
 
 
-      <button
-        id="matchingNavButton"
-        class="nav-button"
-        type="button"
-        data-screen="matchingScreen">
+      <button id="matchingNavButton" class="nav-button" type="button" data-screen="matchingScreen">
 
         <span class="nav-icon">🔄</span>
         <span>マッチング</span>
@@ -617,11 +545,7 @@
       </button>
 
 
-      <button
-        id="settingsNavButton"
-        class="nav-button"
-        type="button"
-        data-screen="settingsScreen">
+      <button id="settingsNavButton" class="nav-button" type="button" data-screen="settingsScreen">
 
         <span class="nav-icon">⚙️</span>
         <span>設定</span>
@@ -637,18 +561,11 @@
   <!-- ==================================================
        スキル選択モーダル
   =================================================== -->
-  <div
-    id="skillSelectorModal"
-    class="modal"
-    aria-hidden="true">
+  <div id="skillSelectorModal" class="modal" aria-hidden="true">
 
     <div class="modal-overlay"></div>
 
-    <div
-      class="modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="skillSelectorTitle">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="skillSelectorTitle">
 
       <div class="modal-header">
 
@@ -656,11 +573,7 @@
           スキル選択
         </h2>
 
-        <button
-          id="closeSkillSelectorButton"
-          class="close-button"
-          type="button"
-          aria-label="閉じる">
+        <button id="closeSkillSelectorButton" class="close-button" type="button" aria-label="閉じる">
           ×
         </button>
 
@@ -674,18 +587,13 @@
           スキル検索
         </label>
 
-        <input
-          id="skillSearch"
-          type="search"
-          placeholder="スキル名を入力">
+        <input id="skillSearch" type="search" placeholder="スキル名を入力">
 
       </div>
 
 
       <!-- スキル一覧 -->
-      <div
-        id="skillSelectorList"
-        class="skill-selector-list">
+      <div id="skillSelectorList" class="skill-selector-list">
 
         <!-- JavaScriptで全スキルを生成 -->
 
@@ -694,10 +602,7 @@
 
       <div class="modal-actions">
 
-        <button
-          id="confirmSkillSelectionButton"
-          class="primary-button"
-          type="button">
+        <button id="confirmSkillSelectionButton" class="primary-button" type="button">
           決定
         </button>
 

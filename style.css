@@ -1,4 +1,4 @@
-```css
+css
 /*
  * eFootball Skill Manager
  * Copyright (c) 2026 numa. All Rights Reserved.
@@ -1366,4 +1366,82 @@ label {
   }
 
 }
-```
+
+/* =========================================================
+   選手編集
+   登録 / 保存 / 削除
+========================================================= */
+
+
+/* =========================
+   ボタン配置
+========================= */
+
+.player-edit-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+
+/* =========================
+   保存 / 登録
+========================= */
+
+.player-edit-actions .primary-button {
+  width: 100%;
+}
+
+
+/* =========================
+   削除
+========================= */
+
+.player-edit-actions .danger-button {
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 10px 16px;
+
+  border: 1px solid #111827;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* タップ時 */
+.player-edit-actions .danger-button:active {
+  background: #f3f4f6;
+}
+
+
+/* =========================
+   hidden
+========================= */
+
+.player-edit-actions .danger-button[hidden] {
+  display: none;
+}
+
+
+/* =========================
+   新規登録時
+
+   削除がhiddenの場合は
+   登録ボタンを横幅いっぱいにする
+========================= */
+
+.player-edit-actions:has(.danger-button[hidden]) {
+  grid-template-columns: 1fr;
+}
