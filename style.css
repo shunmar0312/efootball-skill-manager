@@ -1446,3 +1446,41 @@ label {
 .player-edit-actions:has(.danger-button[hidden]) {
   grid-template-columns: 1fr;
 }
+
+/* =========================================================
+   入力欄の横幅補正
+========================================================= */
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* =========================================================
+   スマホ時のヘッダー横はみ出し防止
+========================================================= */
+
+.app-header {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+.app {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+  .app-header {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
