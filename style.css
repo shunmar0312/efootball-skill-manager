@@ -1621,7 +1621,8 @@ body,
   }
 
 
-  #playerForm input,
+  #playerForm input[type="text"],
+  #playerForm input[type="search"],
   #playerForm select,
   #playerForm textarea {
     width: 100%;
@@ -1664,6 +1665,38 @@ body,
 
     width: 24px;
     height: 24px;
+  }
+
+}
+
+/* =========================================================
+   スマホ：特別強化チェックボックス
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .toggle-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    width: 100%;
+    max-width: 100%;
+
+    white-space: normal;
+  }
+
+  #playerForm .toggle-row input[type="checkbox"] {
+    flex: 0 0 24px;
+
+    width: 24px;
+    max-width: 24px;
+    height: 24px;
+
+    margin: 0;
   }
 
 }
