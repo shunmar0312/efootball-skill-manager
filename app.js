@@ -945,8 +945,11 @@ const skillSelectorModal =
 const skillSelectorTitle =
   document.getElementById("skillSelectorTitle");
 
+const skillSelectorCount =
+  document.getElementById("skillSelectorCount");
+
 const skillSelectorList =
-  document.getElementById("skillSelectorList");
+  document.getElementById("skillSelectorList"); F
 
 const skillSearch =
   document.getElementById("skillSearch");
@@ -2229,6 +2232,20 @@ openAdditionalSkillSelectorButton.addEventListener(
   }
 );
 
+function updateSkillSelectorCount() {
+
+  const maxCount =
+    skillSelectorMode === "owned"
+      ? 10
+      : 5;
+
+  skillSelectorCount.textContent =
+    temporarySelectedSkills.size +
+    " / " +
+    maxCount;
+
+} F
+
 
 function openSkillSelector(mode) {
 
@@ -2265,6 +2282,8 @@ function openSkillSelector(mode) {
 
   }
 
+
+  updateSkillSelectorCount();
 
   renderSkillSelectorList();
 
@@ -2559,6 +2578,8 @@ function renderSkillSelectorList() {
                   "selected"
                 );
 
+                updateSkillSelectorCount();
+
                 return;
 
               }
@@ -2595,6 +2616,8 @@ function renderSkillSelectorList() {
               button.classList.add(
                 "selected"
               );
+
+              updateSkillSelectorCount();
 
             }
           );
