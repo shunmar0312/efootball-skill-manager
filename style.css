@@ -1702,26 +1702,99 @@ body,
 }
 
 /* =========================================================
-   選手一覧 ヘッダー操作
+   選手一覧 ヘッダー・操作
 ========================================================= */
 
 .player-list-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
-.player-list-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.player-list-header h2 {
+  margin: 0;
+}
+
+.player-list-header #addPlayerButton {
+  width: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.player-list-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+
+.player-list-tools button {
+  width: 100%;
+}
+
+
+/* =========================================================
+   絞り込み
+========================================================= */
+
+.player-filter-panel {
+  margin-bottom: 20px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.player-filter-panel h3 {
+  margin: 0 0 16px;
+}
+
+.filter-section {
+  margin-bottom: 18px;
+}
+
+.filter-title {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.filter-position-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
-.list-action-button {
-  width: auto;
-  white-space: nowrap;
+.filter-position-selector button {
+  min-width: 0;
+  padding: 10px 4px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.filter-position-selector button.selected {
+  border-color: #111827;
+  background: #111827;
+  color: #ffffff;
+}
+
+.filter-checkboxes {
+  display: grid;
+  gap: 12px;
+}
+
+.filter-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-checkboxes input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
 
 
@@ -1730,19 +1803,15 @@ body,
 @media (max-width: 768px) {
 
   .player-list-header {
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
   }
 
-  .player-list-actions {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 8px;
+  .player-list-header #addPlayerButton {
+    width: auto;
   }
 
-  #addPlayerButton {
-    grid-column: 1 / -1;
-    width: 100%;
+  .filter-position-selector {
+    grid-template-columns: repeat(4, 1fr);
   }
 
 }

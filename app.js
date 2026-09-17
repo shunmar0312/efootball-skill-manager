@@ -870,8 +870,31 @@ const navButtons =
 const addPlayerButton =
   document.getElementById("addPlayerButton");
 
-const backToPlayerListButton =
-  document.getElementById("backToPlayerListButton");
+const filterPlayerButton =
+  document.getElementById("filterPlayerButton");
+
+const sortPlayerButton =
+  document.getElementById("sortPlayerButton");
+
+const playerFilterPanel =
+  document.getElementById("playerFilterPanel");
+
+const filterPositionButtons =
+  document.querySelectorAll(
+    "#filterPositionSelector button"
+  );
+
+const filterSpecialTraining =
+  document.getElementById("filterSpecialTraining");
+
+const filterUnacquiredSkills =
+  document.getElementById("filterUnacquiredSkills");
+
+const filterCompletedSkills =
+  document.getElementById("filterCompletedSkills");
+
+const clearPlayerFilterButton =
+  document.getElementById("clearPlayerFilterButton");
 
 const savePlayerButton =
   document.getElementById("savePlayerButton");
@@ -949,7 +972,7 @@ const skillSelectorCount =
   document.getElementById("skillSelectorCount");
 
 const skillSelectorList =
-  document.getElementById("skillSelectorList"); 
+  document.getElementById("skillSelectorList");
 
 const skillSearch =
   document.getElementById("skillSearch");
@@ -1028,7 +1051,8 @@ const resetDataButton =
    データ
 ========================================================= */
 
-let players = [];
+let selectedFilterPositions =
+  new Set();
 
 
 /*
@@ -1158,6 +1182,110 @@ navButtons.forEach((button) => {
   );
 
 });
+
+/* =========================================================
+   選手絞り込み
+========================================================= */
+
+filterPlayerButton.addEventListener(
+  "click",
+  () => {
+
+    playerFilterPanel.hidden =
+      !playerFilterPanel.hidden;
+
+  }
+);
+
+
+filterPositionButtons.forEach(
+  (button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const position =
+          button.dataset.position;
+
+        if (
+          selectedFilterPositions.has(position)
+        ) {
+
+          selectedFilterPositions.delete(
+            position
+          );
+
+          button.classList.remove(
+            "selected"
+          );
+
+        } else {
+
+          selectedFilterPositions.add(
+            position
+          );
+
+          button.classList.add(
+            "selected"
+          );
+
+        }
+
+        renderPlayerList();
+
+      }
+    );
+
+  }
+);
+
+
+filterSpecialTraining.addEventListener(
+  "change",
+  renderPlayerList
+);
+
+
+filterUnacquiredSkills.addEventListener(
+  "change",
+  renderPlayerList
+);
+
+
+filterCompletedSkills.addEventListener(
+  "change",
+  renderPlayerList
+);
+
+
+clearPlayerFilterButton.addEventListener(
+  "click",
+  () => {
+
+    selectedFilterPositions.clear();
+
+    filterPositionButtons.forEach(
+      (button) => {
+        button.classList.remove(
+          "selected"
+        );
+      }
+    );
+
+    filterSpecialTraining.checked =
+      false;
+
+    filterUnacquiredSkills.checked =
+      false;
+
+    filterCompletedSkills.checked =
+      false;
+
+    renderPlayerList();
+
+  }
+);
 
 
 /* =========================================================
@@ -1447,9 +1575,79 @@ function renderPlayerList() {
   const filteredPlayers =
     players.filter((player) => {
 
-      return player.name
-        .toLowerCase()
-        .includes(searchText);
+      /* 選手名 */
+
+      const matchesName =
+        player.name
+          .toLowerCase()
+          .includes(searchText);
+
+      if (!matchesName) {
+        return false;
+      }
+
+
+      /* ポジション */
+
+      if (
+        selectedFilterPositions.size > 0 &&
+        !selectedFilterPositions.has(
+          player.position
+        )
+      ) {
+        return false;
+      }
+
+
+      /* 特別強化用 */
+
+      if (
+        filterSpecialTraining.checked &&
+        !player.specialTraining
+      ) {
+        return false;
+      }
+
+
+      const additionalSkills =
+        Array.isArray(
+          player.additionalSkills
+        )
+          ? player.additionalSkills
+          : [];
+
+
+      const unacquiredCount =
+        additionalSkills.filter(
+          (skill) =>
+            skill.acquired !== true
+        ).length;
+
+
+      /* 追加スキル未取得あり */
+
+      if (
+        filterUnacquiredSkills.checked &&
+        unacquiredCount === 0
+      ) {
+        return false;
+      }
+
+
+      /* 追加スキル取得完了 */
+
+      if (
+        filterCompletedSkills.checked &&
+        (
+          additionalSkills.length === 0 ||
+          unacquiredCount > 0
+        )
+      ) {
+        return false;
+      }
+
+
+      return true;
 
     });
 
@@ -1459,21 +1657,17 @@ function renderPlayerList() {
     const emptyMessage =
       document.createElement("p");
 
-
     emptyMessage.className =
       "empty-message";
-
 
     emptyMessage.textContent =
       players.length === 0
         ? "登録されている選手はいません。"
         : "条件に一致する選手はいません。";
 
-
     playerList.appendChild(
       emptyMessage
     );
-
 
     return;
 
@@ -2244,7 +2438,7 @@ function updateSkillSelectorCount() {
     " / " +
     maxCount;
 
-} 
+}
 
 
 function openSkillSelector(mode) {

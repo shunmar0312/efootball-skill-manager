@@ -42,25 +42,25 @@
 
         <div class="screen-header player-list-header">
 
-  <h2>選手</h2>
+          <h2>選手</h2>
 
-  <div class="player-list-actions">
+          <button id="addPlayerButton" class="primary-button" type="button">
+            ＋ 選手追加
+          </button>
 
-    <button id="filterPlayerButton" class="secondary-button list-action-button" type="button">
-      絞り込み
-    </button>
+        </div>
 
-    <button id="sortPlayerButton" class="secondary-button list-action-button" type="button">
-      並び替え
-    </button>
+        <div class="player-list-tools">
 
-    <button id="addPlayerButton" class="primary-button list-action-button" type="button">
-      ＋ 選手追加
-    </button>
+          <button id="filterPlayerButton" class="secondary-button" type="button">
+            🔍 絞り込み
+          </button>
 
-  </div>
+          <button id="sortPlayerButton" class="secondary-button" type="button">
+            ↕ 並び替え
+          </button>
 
-</div>
+        </div>
 
 
         <!-- 選手検索 -->
@@ -70,6 +70,58 @@
           <input id="playerSearch" type="search" placeholder="選手名を入力">
         </div>
 
+        <div id="playerFilterPanel" class="player-filter-panel" hidden>
+
+          <h3>絞り込み</h3>
+
+          <div class="filter-section">
+
+            <div class="filter-title">ポジション</div>
+
+            <div id="filterPositionSelector" class="filter-position-selector">
+
+              <button type="button" data-position="CF">CF</button>
+              <button type="button" data-position="ST">ST</button>
+              <button type="button" data-position="LWG">LWG</button>
+              <button type="button" data-position="RWG">RWG</button>
+              <button type="button" data-position="LMF">LMF</button>
+              <button type="button" data-position="RMF">RMF</button>
+              <button type="button" data-position="OMF">OMF</button>
+              <button type="button" data-position="CMF">CMF</button>
+              <button type="button" data-position="DMF">DMF</button>
+              <button type="button" data-position="LSB">LSB</button>
+              <button type="button" data-position="RSB">RSB</button>
+              <button type="button" data-position="CB">CB</button>
+              <button type="button" data-position="GK">GK</button>
+
+            </div>
+
+          </div>
+
+          <div class="filter-section filter-checkboxes">
+
+            <label>
+              <input id="filterSpecialTraining" type="checkbox">
+              特別強化用
+            </label>
+
+            <label>
+              <input id="filterUnacquiredSkills" type="checkbox">
+              追加スキル未取得あり
+            </label>
+
+            <label>
+              <input id="filterCompletedSkills" type="checkbox">
+              追加スキル取得完了
+            </label>
+
+          </div>
+
+          <button id="clearPlayerFilterButton" class="secondary-button" type="button">
+            条件をクリア
+          </button>
+
+        </div>
 
         <!-- 選手一覧 -->
         <div id="playerList" class="player-list">
