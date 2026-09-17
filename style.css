@@ -1815,3 +1815,47 @@ body,
   }
 
 }
+
+/* =========================================================
+   選手並び替え
+========================================================= */
+
+.player-sort-panel {
+  margin-bottom: 20px;
+  padding: 16px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+
+  background: #ffffff;
+}
+
+.player-sort-panel h3 {
+  margin: 0 0 14px;
+}
+
+.player-sort-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.player-sort-options button {
+  min-height: 44px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+
+  padding: 9px 8px;
+
+  background: #ffffff;
+  color: #374151;
+
+  font-weight: 700;
+}
+
+.player-sort-options button.selected {
+  border-color: #111827;
+  background: #111827;
+  color: #ffffff;
+}

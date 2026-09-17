@@ -876,6 +876,14 @@ const filterPlayerButton =
 const sortPlayerButton =
   document.getElementById("sortPlayerButton");
 
+const playerSortPanel =
+  document.getElementById("playerSortPanel");
+
+const playerSortButtons =
+  document.querySelectorAll(
+    "#playerSortPanel [data-sort]"
+  );
+
 const playerFilterPanel =
   document.getElementById("playerFilterPanel");
 
@@ -1054,6 +1062,24 @@ const resetDataButton =
 let selectedFilterPositions =
   new Set();
 
+let currentPlayerSort = "created";
+
+const PLAYER_POSITION_ORDER = [
+  "CF",
+  "ST",
+  "LWG",
+  "RWG",
+  "LMF",
+  "RMF",
+  "OMF",
+  "CMF",
+  "DMF",
+  "LSB",
+  "RSB",
+  "CB",
+  "GK"
+];
+
 
 /*
   ポジション別おすすめ設定
@@ -1182,6 +1208,53 @@ navButtons.forEach((button) => {
   );
 
 });
+
+/* =========================================================
+   選手並び替え
+========================================================= */
+
+sortPlayerButton.addEventListener(
+  "click",
+  () => {
+
+    playerSortPanel.hidden =
+      !playerSortPanel.hidden;
+
+  }
+);
+
+
+playerSortButtons.forEach(
+  (button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        currentPlayerSort =
+          button.dataset.sort;
+
+        playerSortButtons.forEach(
+          (sortButton) => {
+            sortButton.classList.remove(
+              "selected"
+            );
+          }
+        );
+
+        button.classList.add(
+          "selected"
+        );
+
+        renderPlayerList();
+
+        playerSortPanel.hidden = true;
+
+      }
+    );
+
+  }
+);
 
 /* =========================================================
    選手絞り込み
@@ -1650,6 +1723,95 @@ function renderPlayerList() {
       return true;
 
     });
+
+  filteredPlayers.sort(
+    (playerA, playerB) => {
+
+      /* 登録順 */
+
+      if (currentPlayerSort === "created") {
+
+        return (
+          new Date(playerA.createdAt || 0) -
+          new Date(playerB.createdAt || 0)
+        );
+
+      }
+
+
+      /* 選手名 */
+
+      if (currentPlayerSort === "name") {
+
+        return playerA.name.localeCompare(
+          playerB.name,
+          "ja"
+        );
+
+      }
+
+
+      /* ポジション */
+
+      if (currentPlayerSort === "position") {
+
+        const positionA =
+          PLAYER_POSITION_ORDER.indexOf(
+            playerA.position
+          );
+
+        const positionB =
+          PLAYER_POSITION_ORDER.indexOf(
+            playerB.position
+          );
+
+        return positionA - positionB;
+
+      }
+
+
+      /* 追加スキル未取得数 */
+
+      if (
+        currentPlayerSort ===
+        "unacquired"
+      ) {
+
+        const countA =
+          (
+            Array.isArray(
+              playerA.additionalSkills
+            )
+              ? playerA.additionalSkills
+              : []
+          ).filter(
+            (skill) =>
+              skill.acquired !== true
+          ).length;
+
+
+        const countB =
+          (
+            Array.isArray(
+              playerB.additionalSkills
+            )
+              ? playerB.additionalSkills
+              : []
+          ).filter(
+            (skill) =>
+              skill.acquired !== true
+          ).length;
+
+
+        return countB - countA;
+
+      }
+
+
+      return 0;
+
+    }
+  );
 
 
   if (filteredPlayers.length === 0) {
