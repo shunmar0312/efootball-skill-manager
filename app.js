@@ -949,7 +949,7 @@ const skillSelectorCount =
   document.getElementById("skillSelectorCount");
 
 const skillSelectorList =
-  document.getElementById("skillSelectorList"); F
+  document.getElementById("skillSelectorList"); 
 
 const skillSearch =
   document.getElementById("skillSearch");
@@ -2244,7 +2244,7 @@ function updateSkillSelectorCount() {
     " / " +
     maxCount;
 
-} F
+} 
 
 
 function openSkillSelector(mode) {

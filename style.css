@@ -1700,3 +1700,49 @@ body,
   }
 
 }
+
+/* =========================================================
+   選手一覧 ヘッダー操作
+========================================================= */
+
+.player-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.player-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.list-action-button {
+  width: auto;
+  white-space: nowrap;
+}
+
+
+/* スマートフォン */
+
+@media (max-width: 768px) {
+
+  .player-list-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .player-list-actions {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 8px;
+  }
+
+  #addPlayerButton {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+}
